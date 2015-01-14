@@ -19,6 +19,7 @@ public class Empleado {
     private String domicilio;
     private List<Registro> reg = new ArrayList<Registro>();
     private long telefono;
+    private Localidad olocalidad;
 
     public long getIdempleados() {
         return idempleados;
@@ -66,5 +67,13 @@ public class Empleado {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public Localidad getOlocalidad() {
+        return olocalidad;
+    }
+
+    public void setOlocalidad(Localidad olocalidad) {
+        this.olocalidad = olocalidad;
     }
 }

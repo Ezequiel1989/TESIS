@@ -12,7 +12,10 @@
         <property name="nombre" type="string" column="NOMBRE" />
         <property name="apellido" type="string" column="APELLIDO" />
         <property name="telefono" type="long" column="TELEFONO" />
-        <property name="domicilio" type="string" column="DOMICILIO" />
+        <property name="domicilio" type="string" column="DOMICILIO" />     
+        <many-to-one name="olocalidad" 
+        column="idlocalidades"
+        not-null="true"/>
         <list name="reg"  cascade="all" inverse="false"  >
             <key>
                 <column name="IDEMPLEADOS"  />

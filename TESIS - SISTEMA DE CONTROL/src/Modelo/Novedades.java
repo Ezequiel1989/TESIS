@@ -17,7 +17,7 @@ public class Novedades
     private Date fechainicio;
     private Date fechafin;
     private String Observaciones;
-    private Usuario ousuario;
+    private Empleado oempleado;
     private long idnovedades;
 
     /**
@@ -65,16 +65,7 @@ public class Novedades
     /**
      * @return the ousuario
      */
-    public Usuario getOusuario() {
-        return ousuario;
-    }
 
-    /**
-     * @param ousuario the ousuario to set
-     */
-    public void setOusuario(Usuario ousuario) {
-        this.ousuario = ousuario;
-    }
 
     /**
      * @return the idnovedades
@@ -88,6 +79,14 @@ public class Novedades
      */
     public void setIdnovedades(long idnovedades) {
         this.idnovedades = idnovedades;
+    }
+
+    public Empleado getOempleado() {
+        return oempleado;
+    }
+
+    public void setOempleado(Empleado oempleado) {
+        this.oempleado = oempleado;
     }
     
     

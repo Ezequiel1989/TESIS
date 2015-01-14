@@ -11,22 +11,20 @@ package Modelo;
  */
 public class Localidad {
 
-    private long idlocalidad;
+    private long idlocalidades;
     private String localidad;
-    private Empleado oempleado;
-
     /**
      * @return the idlocalidad
      */
-    public long getIdlocalidad() {
-        return idlocalidad;
+    public long getIdlocalidades() {
+        return idlocalidades;
     }
 
     /**
      * @param idlocalidad the idlocalidad to set
      */
-    public void setIdlocalidad(long idlocalidad) {
-        this.idlocalidad = idlocalidad;
+    public void setIdlocalidades(long idlocalidad) {
+        this.idlocalidades = idlocalidad;
     }
 
     /**
@@ -43,17 +41,5 @@ public class Localidad {
         this.localidad = localidad;
     }
 
-    /**
-     * @return the oempleado
-     */
-    public Empleado getOempleado() {
-        return oempleado;
-    }
 
-    /**
-     * @param oempleado the oempleado to set
-     */
-    public void setOempleado(Empleado oempleado) {
-        this.oempleado = oempleado;
-    }
 }

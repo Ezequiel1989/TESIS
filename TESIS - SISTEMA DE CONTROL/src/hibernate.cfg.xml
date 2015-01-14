@@ -19,5 +19,6 @@
     <mapping resource="Mapeo/Usuario.hbm.xml"/>
     <mapping resource="Mapeo/Empleado.hbm.xml"/>
     <mapping resource="Mapeo/Registro.hbm.xml"/>
+    <mapping resource="Mapeo/Localidad.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
