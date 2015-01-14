@@ -7,15 +7,15 @@ package Controladora;
 
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
+import org.hibernate.HibernateException;
 
 /**
  *
  * @author Ezequiel
  */
 public class UsuarioControladora {
-     UsuarioDAO usuario = new UsuarioDAO();
-     public Usuario confirmarUsuario(String user, String pass)
-     {
-         return usuario.confirmarUsuario(user, pass);
-     }
+    UsuarioDAO usr = new UsuarioDAO();
+    public Usuario confirmarUsuario(String user, String pass) throws HibernateException {
+    return usr.confirmarUsuario(user, pass);
+    }
 }

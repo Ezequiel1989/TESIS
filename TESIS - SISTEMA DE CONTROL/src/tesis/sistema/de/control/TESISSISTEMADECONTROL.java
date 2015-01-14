@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tesis.sistema.de.control;
+import Controladora.UsuarioControladora;
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
 /**
@@ -17,8 +18,8 @@ public class TESISSISTEMADECONTROL {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        UsuarioDAO DAOUsuario = new UsuarioDAO();
-        Usuario confirmar = DAOUsuario.confirmarUsuario("1", "1");
+        UsuarioControladora ContUser = new UsuarioControladora();
+        Usuario confirmar = ContUser.confirmarUsuario("1", "1");
         System.out.println("usuario: " +confirmar.getUsuario()+"  password: "+confirmar.getPassword());
     }
     
