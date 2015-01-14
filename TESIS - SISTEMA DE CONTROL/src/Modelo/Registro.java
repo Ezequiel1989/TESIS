@@ -40,4 +40,12 @@ public class Registro {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
 }

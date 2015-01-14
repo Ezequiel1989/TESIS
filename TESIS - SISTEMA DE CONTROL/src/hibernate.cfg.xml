@@ -24,5 +24,6 @@
     <mapping resource="Mapeo/Usuario.xml"/>
     <mapping/>
     <mapping resource="Mapeo/Registro.hbm.xml"/>
+    <mapping resource="Mapeo/Empleado.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

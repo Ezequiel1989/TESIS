@@ -11,4 +11,5 @@
         </id>
         <property name="registro" type="DateTime" column="REGISTRO" />
         <property name="foto" type="string" column="FOTO" />
+        <many-to-one name="empleado" column="idempleados" />
     </class></hibernate-mapping>

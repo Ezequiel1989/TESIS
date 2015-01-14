@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="Modelo.Empleado" table="EMPLEADOS">
+        <id name="idempleados" column="IDEMPLEADOS">
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string" column="NOMBRE" />
+        <property name="apellido" type="string" column="APELLIDO" />
+        <property name="telefono" type="long" column="TELEFONO" />
+        <property name="domicilio" type="string" column="DOMICILIO" />
+        <list name="reg"  cascade="all" inverse="false"  >
+            <key>
+                <column name="IDEMPLEADOS"  />
+            </key>
+            <list-index>
+                <column name="Idreg"  />
+            </list-index>
+            <one-to-many class="Modelo.Registro" />
+        </list>
+    </class>
+
+</hibernate-mapping>
