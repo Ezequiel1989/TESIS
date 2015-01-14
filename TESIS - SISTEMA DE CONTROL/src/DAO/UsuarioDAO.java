@@ -53,7 +53,7 @@ public class UsuarioDAO {
      */
     public Usuario confirmarUsuario(String user, String pass) throws HibernateException {
         Usuario usuario = null;
-        String hql = "from Modelo.Usuarios where USUARIO='" + user + "' AND PASSWORD='" + pass + "'";
+        String hql = "from Modelo.Usuario where USUARIO='" + user + "' AND PASSWORD='" + pass + "'";
         try {
             iniciaOperacion();
             Query query = sesion.createQuery(hql);
