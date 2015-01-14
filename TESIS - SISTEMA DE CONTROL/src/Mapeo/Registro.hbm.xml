@@ -9,7 +9,8 @@
         <id name="idregistros" column="IDREGISTROS">
             <generator class="identity" />
         </id>
-        <property name="registro" type="DateTime" column="REGISTRO" />
+        <property name="registro" type="date" column="REGISTRO" />
         <property name="foto" type="string" column="FOTO" />
         <many-to-one name="empleado" column="idempleados" />
-    </class></hibernate-mapping>
+    </class>
+</hibernate-mapping>

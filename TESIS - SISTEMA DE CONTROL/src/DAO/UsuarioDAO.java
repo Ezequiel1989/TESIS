@@ -52,19 +52,20 @@ public class UsuarioDAO {
      * @return Devuelve un usuario
      * @throws HibernateException
      */
-    public Usuario confirmarUsuario(String user, String pass) throws HibernateException {
+    public Usuario confirmarUsuario(String user, String pass) //throws HibernateException {
+    {
         Usuario usuario = null;
         String hql = "from Modelo.Usuario where USUARIO='" + user + "' AND PASSWORD='" + pass + "'";
-        try {
+        //try {
             iniciaOperacion();
             Query query = sesion.createQuery(hql);
             usuario = (Usuario) query.uniqueResult();
-        } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
-        } finally {
-            sesion.close();
-        }
+       // } catch (HibernateException he) {
+       //     manejaExcepcion(he);
+        //    throw he;
+       // } finally {
+        //    sesion.close();
+       // }
         return usuario;
     }
 }

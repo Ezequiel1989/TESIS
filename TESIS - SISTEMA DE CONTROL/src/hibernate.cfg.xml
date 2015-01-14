@@ -16,14 +16,8 @@
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     <!-- Archivos de mapeo -->
-    <mapping resource="Mapeo/HistoriaClinica.hbm.xml"/>
-    <mapping resource="Mapeo/Paciente.hbm.xml"/>
     <mapping resource="Mapeo/Usuario.hbm.xml"/>
-    <mapping resource="Mapeo/Turno.hbm.xml"/>
-    <mapping resource="Mapeo/Empleados.xml"/>
-    <mapping resource="Mapeo/Usuario.xml"/>
-    <mapping/>
-    <mapping resource="Mapeo/Registro.hbm.xml"/>
     <mapping resource="Mapeo/Empleado.hbm.xml"/>
+    <mapping resource="Mapeo/Registro.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

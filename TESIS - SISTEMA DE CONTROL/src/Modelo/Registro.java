@@ -12,17 +12,17 @@ import java.util.Date;
  * @author Ezequiel
  */
 public class Registro {
-    private long idregistro;
+    private long idregistros;
     private Date registro;
     private String foto;
     private Empleado empleado;
 
-    public long getIdregistro() {
-        return idregistro;
+    public long getIdregistros() {
+        return idregistros;
     }
 
-    public void setIdregistro(long idregistro) {
-        this.idregistro = idregistro;
+    public void setIdregistros(long idregistro) {
+        this.idregistros = idregistro;
     }
 
     public Date getRegistro() {

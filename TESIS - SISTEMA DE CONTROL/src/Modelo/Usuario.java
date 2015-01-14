@@ -10,7 +10,7 @@ package Modelo;
  * @author Ezequiel
  */
 public class Usuario {
-    private long idusuario;
+    private long idusuarios;
     private String usuario;
     private String password;
 
@@ -31,11 +31,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public long getIdusuario() {
-        return idusuario;
+    public long getIdusuarios() {
+        return idusuarios;
     }
 
-    public void setIdusuario(long idusuario) {
-        this.idusuario = idusuario;
+    public void setIdusuarios(long idusuario) {
+        this.idusuarios = idusuario;
     }
 }

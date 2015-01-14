@@ -13,19 +13,19 @@ import java.util.List;
  * @author Ezequiel
  */
 public class Empleado {
-    private long idempleado;
+    private long idempleados;
     private String nombre;
     private String apellido;
     private String domicilio;
     private List<Registro> reg = new ArrayList<Registro>();
     private long telefono;
 
-    public long getIdempleado() {
-        return idempleado;
+    public long getIdempleados() {
+        return idempleados;
     }
 
-    public void setIdempleado(long idempleado) {
-        this.idempleado = idempleado;
+    public void setIdempleados(long idempleado) {
+        this.idempleados = idempleado;
     }
 
     public String getNombre() {
