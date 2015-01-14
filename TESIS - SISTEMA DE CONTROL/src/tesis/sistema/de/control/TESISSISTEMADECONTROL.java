@@ -19,7 +19,7 @@ public class TESISSISTEMADECONTROL {
         // TODO code application logic here
         UsuarioDAO DAOUsuario = new UsuarioDAO();
         Usuario confirmar = DAOUsuario.confirmarUsuario("1", "1");
-        System.out.println(confirmar.getUsuario()+"  "+confirmar.getPassword());
+        System.out.println("usuario: " +confirmar.getUsuario()+"  password: "+confirmar.getPassword());
     }
     
 }
