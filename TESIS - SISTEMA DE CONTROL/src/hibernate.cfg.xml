@@ -7,7 +7,6 @@
     <!-- aca diferencie mayuscula y minuscula y lo mismo -->
     <property name="connection.url">jdbc:mysql://localhost/control</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">romeo1</property>
     <!-- Configuracion del pool interno -->
     <property name="connection.pool_size">1</property>
     <!-- Dialecto de la base de datos PROBE CON MySQLDialect y la que esta ahora -->
@@ -16,6 +15,7 @@
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     <!-- Archivos de mapeo -->
+    <property name="hibernate.connection.password">romeo1</property>
     <mapping resource="Mapeo/Usuario.hbm.xml"/>
     <mapping resource="Mapeo/Empleado.hbm.xml"/>
     <mapping resource="Mapeo/Registro.hbm.xml"/>
