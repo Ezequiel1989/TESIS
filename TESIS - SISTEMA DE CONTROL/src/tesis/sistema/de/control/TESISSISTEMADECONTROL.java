@@ -43,11 +43,13 @@ import org.hibernate.HibernateException;
 /**
  *
  * @author matias
-@@ -16,11 +49,75 @@ public class TESISSISTEMADECONTROL {
-    /**
-     * @param args the command line arguments
-     */
-    public class TESISSISTEMADECONTROL {
+ * @@ -16,11 +49,75 @@ public class TESISSISTEMADECONTROL {
+    /
+ **
+ * @param args the command line arguments
+ */
+public class TESISSISTEMADECONTROL {
+
     private static final String FORMATO_IMAGEN = "png";
     private static final String RUTA_IMAGEN = System.getProperty("user.home") + "/qrZxing.png";
     private static final int ancho = 500;
@@ -58,14 +60,15 @@ import org.hibernate.HibernateException;
 
         // TODO code application logic here
         UsuarioControladora ContUser = new UsuarioControladora();
-        Usuario confirmar = ContUser.confirmarUsuario("asd", "asd");
+        Usuario confirmar = ContUser.confirmarUsuario("1", "1");
         System.out.println("usuario: " + confirmar.getUsuario() + "  password: " + confirmar.getPassword());
-        Reader lector = new MultiFormatReader();
+        Reader lector = new MultiFormatReader();        
         File ubicacionImagen = new File(System.getProperty("user.home") + "/qrcodeDemo.png");
         BufferedImage imagen;
 
         if (ubicacionImagen.exists()) {
             try {
+                
                 imagen = ImageIO.read(ubicacionImagen);
                 LuminanceSource fuente = new BufferedImageLuminanceSource(imagen);
                 BinaryBitmap mapaBits = new BinaryBitmap(new HybridBinarizer(fuente));
@@ -81,6 +84,8 @@ import org.hibernate.HibernateException;
                 throw new ExceptionInInitializerError(ex);
             }
 
+            
+            
         }
         BitMatrix bm;
         Writer writer = new QRCodeWriter();
@@ -104,7 +109,7 @@ import org.hibernate.HibernateException;
             throw new ExceptionInInitializerError(x);
         }
     }
-    
+
     private static BufferedImage invertirColores(BufferedImage imagen) {
         for (int x = 0; x < ancho; x++) {
             for (int y = 0; y < alto; y++) {
