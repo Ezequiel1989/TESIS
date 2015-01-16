@@ -76,4 +76,10 @@ public class Empleado {
     public void setOlocalidad(Localidad olocalidad) {
         this.olocalidad = olocalidad;
     }
+    
+    
+    // CONSTRUCTORES
+    
+        public   Empleado()
+        {};
 }
