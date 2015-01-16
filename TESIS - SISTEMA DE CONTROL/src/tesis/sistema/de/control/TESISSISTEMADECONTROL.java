@@ -43,12 +43,11 @@ import org.hibernate.HibernateException;
 /**
  *
  * @author matias
- */
-public class TESISSISTEMADECONTROL {
-
+@@ -16,11 +49,75 @@ public class TESISSISTEMADECONTROL {
     /**
      * @param args the command line arguments
      */
+    public class TESISSISTEMADECONTROL {
     private static final String FORMATO_IMAGEN = "png";
     private static final String RUTA_IMAGEN = System.getProperty("user.home") + "/qrZxing.png";
     private static final int ancho = 500;
@@ -59,7 +58,7 @@ public class TESISSISTEMADECONTROL {
 
         // TODO code application logic here
         UsuarioControladora ContUser = new UsuarioControladora();
-        Usuario confirmar = ContUser.confirmarUsuario("1", "1");
+        Usuario confirmar = ContUser.confirmarUsuario("asd", "asd");
         System.out.println("usuario: " + confirmar.getUsuario() + "  password: " + confirmar.getPassword());
         Reader lector = new MultiFormatReader();
         File ubicacionImagen = new File(System.getProperty("user.home") + "/qrcodeDemo.png");
@@ -105,7 +104,7 @@ public class TESISSISTEMADECONTROL {
             throw new ExceptionInInitializerError(x);
         }
     }
-
+    
     private static BufferedImage invertirColores(BufferedImage imagen) {
         for (int x = 0; x < ancho; x++) {
             for (int y = 0; y < alto; y++) {
@@ -119,5 +118,4 @@ public class TESISSISTEMADECONTROL {
         }
         return imagen;
     }
-
 }
