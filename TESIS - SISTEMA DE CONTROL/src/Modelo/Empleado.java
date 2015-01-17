@@ -76,4 +76,19 @@ public class Empleado {
     public void setOlocalidad(Localidad olocalidad) {
         this.olocalidad = olocalidad;
     }
+    
+    
+    // CONSTRUCTORES
+    
+        public   Empleado()
+        {};
+        
+        public Empleado(String nomb, String ape, String dom, long tel)
+        {
+            this.setNombre(nomb);
+            this.setApellido(ape);
+            this.setDomicilio(dom);
+            this.setTelefono(tel);
+        }
+        ;
 }
