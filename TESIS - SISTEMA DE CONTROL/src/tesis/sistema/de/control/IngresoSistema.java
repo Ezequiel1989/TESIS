@@ -28,7 +28,7 @@ public class IngresoSistema extends javax.swing.JPanel {
     private void initComponents() {
 
         txtUser = new java.awt.TextArea();
-        textArea2 = new java.awt.TextArea();
+        txtcontraseña = new java.awt.TextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
@@ -36,8 +36,8 @@ public class IngresoSistema extends javax.swing.JPanel {
         txtUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUser.setName("txtUser"); // NOI18N
 
-        textArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textArea2.setName("txtContraseña"); // NOI18N
+        txtcontraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtcontraseña.setName("txtContraseña"); // NOI18N
 
         jLabel1.setText("Contraseña");
 
@@ -61,7 +61,7 @@ public class IngresoSistema extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(99, 99, 99))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnIngresar)
@@ -76,7 +76,7 @@ public class IngresoSistema extends javax.swing.JPanel {
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textArea2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcontraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btnIngresar)
@@ -91,7 +91,7 @@ public class IngresoSistema extends javax.swing.JPanel {
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private java.awt.TextArea textArea2;
     private java.awt.TextArea txtUser;
+    private java.awt.TextArea txtcontraseña;
     // End of variables declaration//GEN-END:variables
 }
