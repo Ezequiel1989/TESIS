@@ -89,6 +89,31 @@ public class Novedades
         this.oempleado = oempleado;
     }
     
+    // CONSTRUCTORES
+    
+    public Novedades()
+    {
+        
+    };
+    
+    public Novedades(Date fechaini, Date fechaf, String observ)
+    {
+        this.setFechainicio(fechaini);
+        this.setFechafin(fechaf);
+        this.setObservaciones(observ);
+    };
+    
+    public Novedades(Date fechaini, Date fechaf, String observ, Empleado emp)
+    {
+        this.setFechainicio(fechaini);
+        this.setFechafin(fechaf);
+        this.setObservaciones(observ);
+        this.setOempleado(emp);
+    
+    };
+    
+    
+    
     
             
     

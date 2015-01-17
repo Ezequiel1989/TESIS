@@ -38,4 +38,14 @@ public class Usuario {
     public void setIdusuarios(long idusuario) {
         this.idusuarios = idusuario;
     }
+    
+    public Usuario()
+    {};
+    
+    public Usuario(String user, String pass)
+    {
+        this.setUsuario(user);
+        this.setPassword(pass);
+        
+    };
 }

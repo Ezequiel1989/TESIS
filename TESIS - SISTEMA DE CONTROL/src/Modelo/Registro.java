@@ -48,4 +48,23 @@ public class Registro {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+    
+    public Registro()
+    {
+        
+    };
+    
+    public Registro(Date reg, String image, Empleado emp)
+    {
+        this.setRegistro(reg);
+        this.setFoto(image);
+        this.setEmpleado(emp);
+    };
+    
+    public Registro(Date reg, String image)
+    {
+        this.setRegistro(reg);
+        this.setFoto(image);
+        
+    };
 }

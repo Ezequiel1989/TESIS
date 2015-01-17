@@ -40,6 +40,20 @@ public class Localidad {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+    
+    // CONSTRUCTORES
+    public Localidad ()
+    {
+        
+    };
+    
+    public Localidad (String loc)
+    {
+        this.setLocalidad(loc);
+    };
+    
+    
+        
 
 
 }
