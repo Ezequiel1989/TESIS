@@ -27,7 +27,9 @@ public class UsuarioDAO {
      *
      * @throws HibernateException
      */
-    private void iniciaOperacion() throws HibernateException {
+    private void iniciaOperacion() throws HibernateException
+    
+    {
         sesion = HibernateUtil.getSessionFactory().openSession();
         tx = sesion.beginTransaction();
     }
@@ -38,6 +40,7 @@ public class UsuarioDAO {
      * @param La excepcion capturada
      * @throws HibernateException
      */
+    
     private void manejaExcepcion(HibernateException he) throws HibernateException {
         tx.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
@@ -51,8 +54,9 @@ public class UsuarioDAO {
      * @return Devuelve un usuario
      * @throws HibernateException
      */
-    public Usuario confirmarUsuario(String user, String pass) throws HibernateException {
-
+    public Usuario confirmarUsuario(String user, String pass) throws HibernateException 
+    
+    {
         Usuario usuario = null;
         String hql = "from Modelo.Usuario where USUARIO='" + user + "' AND PASSWORD='" + pass + "'";
         try {
@@ -67,4 +71,6 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+    
+    
 }
