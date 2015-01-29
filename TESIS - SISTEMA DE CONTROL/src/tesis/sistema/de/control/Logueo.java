@@ -9,12 +9,12 @@ package tesis.sistema.de.control;
  *
  * @author matias
  */
-public class IngresoSistema extends javax.swing.JPanel {
+public class Logueo extends javax.swing.JFrame {
 
     /**
-     * Creates new form IngresoSistema
+     * Creates new form Logueo
      */
-    public IngresoSistema() {
+    public Logueo() {
         initComponents();
     }
 
@@ -27,28 +27,30 @@ public class IngresoSistema extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtUser = new java.awt.TextArea();
-        txtcontraseña = new java.awt.TextArea();
-        lblcontraseña = new javax.swing.JLabel();
         lblusuario = new javax.swing.JLabel();
+        lblcontraseña = new javax.swing.JLabel();
+        txtcontraseña = new java.awt.TextArea();
+        txtUser = new java.awt.TextArea();
         btnIngresar = new javax.swing.JButton();
 
-        txtUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtUser.setName("txtUser"); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblusuario.setText("Usuario");
+
+        lblcontraseña.setText("Contraseña");
 
         txtcontraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtcontraseña.setName("txtContraseña"); // NOI18N
 
-        lblcontraseña.setText("Contraseña");
-
-        lblusuario.setText("Usuario");
+        txtUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUser.setName("txtUser"); // NOI18N
 
         btnIngresar.setBackground(new java.awt.Color(0, 51, 255));
         btnIngresar.setForeground(new java.awt.Color(0, 102, 102));
         btnIngresar.setText("Ingresar");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -83,9 +85,43 @@ public class IngresoSistema extends javax.swing.JPanel {
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        txtUser.getAccessibleContext().setAccessibleName("");
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Logueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Logueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Logueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Logueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Logueo().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
