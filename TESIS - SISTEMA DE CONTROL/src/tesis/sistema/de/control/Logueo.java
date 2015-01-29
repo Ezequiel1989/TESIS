@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package tesis.sistema.de.control;
+
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author matias
@@ -17,6 +19,7 @@ public class Logueo extends javax.swing.JFrame {
      * Creates new form Logueo
      */
     UsuarioDAO DAOUsuario = new UsuarioDAO();
+
     public Logueo() {
         initComponents();
     }
@@ -95,21 +98,19 @@ public class Logueo extends javax.swing.JFrame {
         String password = txt_password.getText();
         String usuario = txt_usuario.getText();
         Usuario confirmar = DAOUsuario.confirmarUsuario(usuario, password);
-        
-        try
-        {
-            if(confirmar != null)
-            {
-                JOptionPane.showMessageDialog(null, "Usuario Correcto");
-            }
-            else
-            {
+
+        try {
+            if (confirmar != null) {
+                if (confirmar.getUsuario().toString().equals("admin")) {
+                    JOptionPane.showMessageDialog(null, "Hola Admin!", "Titular", WIDTH);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario Correcto");
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario Erroneo");
             }
-        }
-        catch(Exception ex)
-        {
-            
+        } catch (Exception ex) {
+
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
