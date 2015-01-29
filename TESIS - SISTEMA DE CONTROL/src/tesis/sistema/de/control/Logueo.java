@@ -106,7 +106,9 @@ public class Logueo extends javax.swing.JFrame {
         try {
             if (confirmar != null) {
                 if (confirmar.getUsuario().toString().equals("admin")) {
-                    JOptionPane.showMessageDialog(null, "Hola Admin!", "Titular", WIDTH);
+                    final ModuloAdministracion frame1 = new ModuloAdministracion(); 
+                    this.setVisible(false);
+                    frame1.setVisible(true);                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario Correcto");
                 }
