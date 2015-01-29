@@ -65,7 +65,7 @@ public class TESISSISTEMADECONTROL {
         Reader lector = new MultiFormatReader();        
         File ubicacionImagen = new File(System.getProperty("user.home") + "/qrcodeDemo.png");
         BufferedImage imagen;
-        final Logueo frame = new Logueo();
+        final Logueo frame = new Logueo();        
         frame.setVisible(true);
         if (ubicacionImagen.exists()) {
             try {
