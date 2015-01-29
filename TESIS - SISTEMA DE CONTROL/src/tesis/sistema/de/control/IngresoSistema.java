@@ -29,8 +29,8 @@ public class IngresoSistema extends javax.swing.JPanel {
 
         txtUser = new java.awt.TextArea();
         txtcontraseña = new java.awt.TextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblcontraseña = new javax.swing.JLabel();
+        lblusuario = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
 
         txtUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -39,9 +39,9 @@ public class IngresoSistema extends javax.swing.JPanel {
         txtcontraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtcontraseña.setName("txtContraseña"); // NOI18N
 
-        jLabel1.setText("Contraseña");
+        lblcontraseña.setText("Contraseña");
 
-        jLabel2.setText("Usuario");
+        lblusuario.setText("Usuario");
 
         btnIngresar.setBackground(new java.awt.Color(0, 51, 255));
         btnIngresar.setForeground(new java.awt.Color(0, 102, 102));
@@ -56,8 +56,8 @@ public class IngresoSistema extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblcontraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblusuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -72,12 +72,12 @@ public class IngresoSistema extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtcontraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblcontraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btnIngresar)
                 .addContainerGap(73, Short.MAX_VALUE))
@@ -89,8 +89,8 @@ public class IngresoSistema extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblcontraseña;
+    private javax.swing.JLabel lblusuario;
     private java.awt.TextArea txtUser;
     private java.awt.TextArea txtcontraseña;
     // End of variables declaration//GEN-END:variables
