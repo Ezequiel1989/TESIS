@@ -11,6 +11,8 @@ package tesis.sistema.de.control;
  */
 public class ModuloAdministracion extends javax.swing.JFrame {
     ABMLocalidades frmloc;
+    ABMEmpleado frmemp;
+    ABMUsuario frmusu;
     /**
      * Creates new form ModuloAdministracion
      */
@@ -36,7 +38,9 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -66,6 +70,14 @@ public class ModuloAdministracion extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem4.setText("Empleados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuItem3.setText("Localidades");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +85,14 @@ public class ModuloAdministracion extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
+
+        jMenuItem5.setText("Usuarios");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -127,6 +147,64 @@ public class ModuloAdministracion extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+          if(frmemp == null )
+          {
+            frmemp=new ABMEmpleado();
+            this.desktop.add(frmemp);
+          // this.escritorio.add(jScrollPane1.add(formrp));
+            frmemp.setVisible(rootPaneCheckingEnabled);
+            frmemp.setMaximum(true);
+           }
+          else
+          {
+            if(frmemp.isClosed())
+            {
+            frmemp=new ABMEmpleado();
+            this.desktop.add(frmloc);
+         // this.escritorio.add(jScrollPane1.add(formrp));
+            frmemp.setVisible(rootPaneCheckingEnabled);
+            frmemp.setMaximum(true);
+            }
+          }
+        }
+     catch(Exception ex)  {
+         
+      }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here
+        try
+        {
+          if(frmusu == null )
+          {
+            frmusu=new ABMUsuario();
+            this.desktop.add(frmusu);
+          // this.escritorio.add(jScrollPane1.add(formrp));
+            frmusu.setVisible(rootPaneCheckingEnabled);
+            frmusu.setMaximum(true);
+           }
+          else
+          {
+            if(frmusu.isClosed())
+            {
+            frmusu=new ABMUsuario();
+            this.desktop.add(frmusu);
+         // this.escritorio.add(jScrollPane1.add(formrp));
+            frmusu.setVisible(rootPaneCheckingEnabled);
+            frmusu.setMaximum(true);
+            }
+          }
+        }
+     catch(Exception ex)  {
+         
+      }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -136,6 +214,8 @@ public class ModuloAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
