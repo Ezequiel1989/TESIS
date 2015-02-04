@@ -68,8 +68,7 @@ public class TESISSISTEMADECONTROL {
         final Logueo frame = new Logueo();        
         frame.setVisible(true);
         if (ubicacionImagen.exists()) {
-            try {
-                
+            try {                
                 imagen = ImageIO.read(ubicacionImagen);
                 LuminanceSource fuente = new BufferedImageLuminanceSource(imagen);
                 BinaryBitmap mapaBits = new BinaryBitmap(new HybridBinarizer(fuente));
