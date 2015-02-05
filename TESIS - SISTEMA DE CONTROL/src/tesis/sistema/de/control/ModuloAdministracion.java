@@ -11,8 +11,8 @@ package tesis.sistema.de.control;
  */
 public class ModuloAdministracion extends javax.swing.JFrame {
     ABMLocalidades frmloc;
-    ABMEmpleado frmemp;
-    ABMUsuario frmusu;
+    ABMEmpleados frmemp;
+    ABMUsuarios frmusu;
     /**
      * Creates new form ModuloAdministracion
      */
@@ -153,7 +153,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         {
           if(frmemp == null )
           {
-            frmemp=new ABMEmpleado();
+            frmemp=new ABMEmpleados();
             this.desktop.add(frmemp);
           // this.escritorio.add(jScrollPane1.add(formrp));
             frmemp.setVisible(rootPaneCheckingEnabled);
@@ -163,7 +163,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
           {
             if(frmemp.isClosed())
             {
-            frmemp=new ABMEmpleado();
+            frmemp=new ABMEmpleados();
             this.desktop.add(frmloc);
          // this.escritorio.add(jScrollPane1.add(formrp));
             frmemp.setVisible(rootPaneCheckingEnabled);
@@ -182,7 +182,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         {
           if(frmusu == null )
           {
-            frmusu=new ABMUsuario();
+            frmusu=new ABMUsuarios();
             this.desktop.add(frmusu);
           // this.escritorio.add(jScrollPane1.add(formrp));
             frmusu.setVisible(rootPaneCheckingEnabled);
@@ -192,7 +192,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
           {
             if(frmusu.isClosed())
             {
-            frmusu=new ABMUsuario();
+            frmusu=new ABMUsuarios();
             this.desktop.add(frmusu);
          // this.escritorio.add(jScrollPane1.add(formrp));
             frmusu.setVisible(rootPaneCheckingEnabled);

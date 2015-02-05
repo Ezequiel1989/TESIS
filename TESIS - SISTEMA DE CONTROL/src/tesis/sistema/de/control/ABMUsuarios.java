@@ -7,14 +7,14 @@ package tesis.sistema.de.control;
 
 /**
  *
- * @author Ezequiel
+ * @author matias
  */
-public class ABMLocalidades extends javax.swing.JInternalFrame {
+public class ABMUsuarios extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ABMLocalidades
+     * Creates new form ABMUsuario
      */
-    public ABMLocalidades() {
+    public ABMUsuarios() {
         initComponents();
     }
 
@@ -27,23 +27,29 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
         EMPLEADOS = new java.awt.Label();
         btn_agregar = new java.awt.Button();
-        txt_localidad = new java.awt.TextField();
+        txt_usuario = new java.awt.TextField();
         btn_modif = new java.awt.Button();
         label2 = new java.awt.Label();
         btn_borrar = new java.awt.Button();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
+        setBorder(null);
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Localidades");
+        setTitle("Usuarios");
+
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setText("CONTRASEÑA");
 
         EMPLEADOS.setAlignment(java.awt.Label.CENTER);
         EMPLEADOS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         EMPLEADOS.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
-        EMPLEADOS.setText("Localidades");
+        EMPLEADOS.setText("Usuarios");
 
         btn_agregar.setLabel("AGREGAR");
         btn_agregar.setName(""); // NOI18N
@@ -51,9 +57,11 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
         btn_modif.setLabel("MODIFICAR");
 
         label2.setAlignment(java.awt.Label.CENTER);
-        label2.setText("LOCALIDAD");
+        label2.setText("USUARIO");
 
         btn_borrar.setLabel("BORRAR");
+
+        jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,13 +72,17 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
                 .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(txt_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(btn_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(btn_modif, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -85,14 +97,18 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_borrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_modif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,7 +120,9 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
     private java.awt.Button btn_agregar;
     private java.awt.Button btn_borrar;
     private java.awt.Button btn_modif;
+    private javax.swing.JPasswordField jPasswordField1;
+    private java.awt.Label label1;
     private java.awt.Label label2;
-    private java.awt.TextField txt_localidad;
+    private java.awt.TextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
