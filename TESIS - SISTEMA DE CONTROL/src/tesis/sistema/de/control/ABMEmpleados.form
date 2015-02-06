@@ -36,31 +36,29 @@
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="btn_borrar" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                          <Component id="EMPLEADOS" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                      <Component id="EMPLEADOS" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="label1" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="label4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="label5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="label2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="label1" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txt_apellido" alignment="0" pref="123" max="32767" attributes="0"/>
                                   <Component id="txt_domicilio" alignment="0" pref="123" max="32767" attributes="0"/>
                                   <Component id="txt_nombre" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txt_telefono" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="choice_localidad" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txt_telefono" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="cmb_localidad" alignment="1" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -72,7 +70,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="EMPLEADOS" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="label2" max="32767" attributes="0"/>
                   <Component id="txt_nombre" max="32767" attributes="0"/>
@@ -89,25 +87,26 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="33" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_borrar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="label4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="label5" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txt_telefono" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="choice_localidad" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cmb_localidad" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_modif" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_agregar" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -166,8 +165,6 @@
     </Component>
     <Component class="java.awt.TextField" name="txt_telefono">
     </Component>
-    <Component class="java.awt.Choice" name="choice_localidad">
-    </Component>
     <Component class="java.awt.Label" name="label5">
       <Properties>
         <Property name="text" type="java.lang.String" value="LOCALIDAD"/>
@@ -187,6 +184,13 @@
     <Component class="java.awt.Button" name="btn_borrar">
       <Properties>
         <Property name="label" type="java.lang.String" value="BORRAR"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmb_localidad">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

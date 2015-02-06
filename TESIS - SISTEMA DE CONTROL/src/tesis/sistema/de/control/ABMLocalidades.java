@@ -5,12 +5,16 @@
  */
 package tesis.sistema.de.control;
 
+import DAO.LocalidadDAO;
+import Modelo.Localidad;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ezequiel
  */
 public class ABMLocalidades extends javax.swing.JInternalFrame {
-
+    LocalidadDAO dloc = new LocalidadDAO();
     /**
      * Creates new form ABMLocalidades
      */
@@ -47,6 +51,11 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
 
         btn_agregar.setLabel("AGREGAR");
         btn_agregar.setName(""); // NOI18N
+        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarActionPerformed(evt);
+            }
+        });
 
         btn_modif.setLabel("MODIFICAR");
 
@@ -97,6 +106,22 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
+                Localidad oLocalidad = null;
+
+        if (!"".equals(txt_localidad.getText())) {
+
+            String n = txt_localidad.getText();
+            oLocalidad = new Localidad(n);
+            dloc.guardaLocalidad(oLocalidad);     
+            JOptionPane.showMessageDialog(null, "Localidad Registrada");
+            this.txt_localidad.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        }
+    }//GEN-LAST:event_btn_agregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
