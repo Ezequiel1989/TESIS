@@ -5,10 +5,13 @@
  */
 package tesis.sistema.de.control;
 
+import DAO.EmpleadoDAO;
 import DAO.LocalidadDAO;
+import Modelo.Empleado;
 import Modelo.Localidad;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +20,7 @@ import java.util.List;
 public class ABMEmpleados extends javax.swing.JInternalFrame {
 
     LocalidadDAO dloc = new LocalidadDAO();
+    EmpleadoDAO demp = new EmpleadoDAO();
 
     /**
      * Creates new form ABMEmpleado
@@ -27,7 +31,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         Iterator it = listaLocalidades.iterator();
         while (it.hasNext()) {
             Localidad l = (Localidad) it.next();
-            cmb_localidad.addItem(l.getLocalidad());            
+            cmb_localidad.addItem(l.getLocalidad());
         }
     }
 
@@ -87,6 +91,11 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
         btn_agregar.setLabel("AGREGAR");
         btn_agregar.setName(""); // NOI18N
+        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarActionPerformed(evt);
+            }
+        });
 
         btn_modif.setLabel("MODIFICAR");
 
@@ -171,6 +180,29 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
     private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_apellidoActionPerformed
+    public void limpiar() {
+        this.txt_nombre.setText("");
+        this.txt_apellido.setText("");
+        this.txt_domicilio.setText("");
+        this.txt_telefono.setText("");
+    }
+    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
+        Localidad oloc = null;
+        Empleado emp = null;
+        try {
+            if (!"".equals(txt_nombre.getText()) && !"".equals(txt_apellido.getText()) && !"".equals(txt_domicilio.getText()) && !"".equals(txt_telefono.getText())) {
+                oloc = dloc.obtenLocalidadNombre(cmb_localidad.getSelectedItem().toString());
+                emp = new Empleado(txt_nombre.getText(), txt_apellido.getText(), txt_domicilio.getText(), Long.valueOf(txt_telefono.getText()), oloc);
+                demp.guardaEmpleado(emp);
+                JOptionPane.showMessageDialog(null, "Empleado Cargado Exitosamente");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe Completar Todos Los Campos");
+            }
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_btn_agregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

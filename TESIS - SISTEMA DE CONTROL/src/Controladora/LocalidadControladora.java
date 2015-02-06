@@ -41,4 +41,8 @@ public class LocalidadControladora {
     public List<Localidad> obtenListaLocalidadesNombre(String nombre) throws HibernateException {
         return loc.obtenListaLocalidadesNombre(nombre);
     }
+    
+        public Localidad obtenLocalidadNombre(String nombre) throws HibernateException {
+                return loc.obtenLocalidadNombre(nombre);
+    }
 }
