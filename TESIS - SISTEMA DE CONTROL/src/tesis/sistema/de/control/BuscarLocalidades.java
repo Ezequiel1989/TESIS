@@ -19,6 +19,7 @@ public class BuscarLocalidades extends javax.swing.JFrame {
 
     LocalidadDAO dloc = new LocalidadDAO();
     int nroFilas = 0;
+    public Localidad olocalidad = null;
 
     /**
      * Creates new form BuscarLocalidad
@@ -41,8 +42,6 @@ public class BuscarLocalidades extends javax.swing.JFrame {
         txt_localidad = new java.awt.TextField();
         label2 = new java.awt.Label();
         btn_buscar = new java.awt.Button();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,7 +137,9 @@ public class BuscarLocalidades extends javax.swing.JFrame {
             int fila = tabla.rowAtPoint(evt.getPoint());
             int columna = tabla.columnAtPoint(evt.getPoint());
             if ((fila > -1) && (columna > -1)) {
-                JOptionPane.showMessageDialog(null, modeloDeMiTabla.getValueAt(fila, columna).toString());
+                //JOptionPane.showMessageDialog(null, modeloDeMiTabla.getValueAt(fila, columna).toString());
+                olocalidad = new Localidad(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 1).toString()),modeloDeMiTabla.getValueAt(fila, 0).toString());                
+                this.setVisible(false);
             }
         }
 

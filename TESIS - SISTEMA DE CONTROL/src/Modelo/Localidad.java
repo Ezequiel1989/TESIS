@@ -13,6 +13,7 @@ public class Localidad {
 
     private long idlocalidades;
     private String localidad;
+
     /**
      * @return the idlocalidad
      */
@@ -40,20 +41,23 @@ public class Localidad {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
-    
-    // CONSTRUCTORES
-    public Localidad ()
-    {
-        
-    };
-    
-    public Localidad (String loc)
-    {
-        this.setLocalidad(loc);
-    };
-    
-    
-        
 
+    // CONSTRUCTORES
+    public Localidad() {
+
+    }
+
+    ;
+    
+    public Localidad(long i, String loc) {
+        this.setIdlocalidades(i);
+        this.setLocalidad(loc);
+    }
+
+    ;
+        public Localidad(String loc) {
+        this.setLocalidad(loc);
+    }
+;
 
 }

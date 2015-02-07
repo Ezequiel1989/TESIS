@@ -10,9 +10,11 @@ package tesis.sistema.de.control;
  * @author matias
  */
 public class ModuloAdministracion extends javax.swing.JFrame {
+
     ABMLocalidades frmloc;
     ABMEmpleados frmemp;
     ABMUsuarios frmusu;
+
     /**
      * Creates new form ModuloAdministracion
      */
@@ -115,42 +117,35 @@ public class ModuloAdministracion extends javax.swing.JFrame {
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        try
-        {
-          if(frmloc==null )
-          {
-            frmloc=new ABMLocalidades();
-            this.desktop.add(frmloc);
-          // this.escritorio.add(jScrollPane1.add(formrp));
-            frmloc.setVisible(rootPaneCheckingEnabled);
-            frmloc.setMaximum(true);
-           }
-          else
-          {
-            if(frmloc.isClosed())
-            {
-            frmloc=new ABMLocalidades();
-            this.desktop.add(frmloc);
-         // this.escritorio.add(jScrollPane1.add(formrp));
-            frmloc.setVisible(rootPaneCheckingEnabled);
-            frmloc.setMaximum(true);
+        try {
+            if (frmloc == null) {
+                frmloc = new ABMLocalidades();
+                this.desktop.add(frmloc);
+                // this.escritorio.add(jScrollPane1.add(formrp));
+                frmloc.setVisible(rootPaneCheckingEnabled);
+                frmloc.setMaximum(true);
+            } else {
+                if (frmloc.isClosed()) {
+                    frmloc = new ABMLocalidades();
+                    this.desktop.add(frmloc);
+                    // this.escritorio.add(jScrollPane1.add(formrp));
+                    frmloc.setVisible(rootPaneCheckingEnabled);
+                    frmloc.setMaximum(true);
+                }
             }
-          }
+        } catch (Exception ex) {
+
         }
-     catch(Exception ex)  {
-         
-      }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        try
-        {
+        try {
           if(frmemp == null )
           {
             frmemp=new ABMEmpleados();
@@ -161,50 +156,40 @@ public class ModuloAdministracion extends javax.swing.JFrame {
            }
           else
           {
-            if(frmemp.isClosed())
-            {
-            frmemp=new ABMEmpleados();
-            this.desktop.add(frmloc);
-         // this.escritorio.add(jScrollPane1.add(formrp));
+              frmemp = null;
+              frmemp=new ABMEmpleados();
+            this.desktop.add(frmemp);
+          // this.escritorio.add(jScrollPane1.add(formrp));
             frmemp.setVisible(rootPaneCheckingEnabled);
             frmemp.setMaximum(true);
-            }
           }
+        } catch (Exception ex) {
+
         }
-     catch(Exception ex)  {
-         
-      }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here
-        try
-        {
-          if(frmusu == null )
-          {
-            frmusu=new ABMUsuarios();
-            this.desktop.add(frmusu);
-          // this.escritorio.add(jScrollPane1.add(formrp));
-            frmusu.setVisible(rootPaneCheckingEnabled);
-            frmusu.setMaximum(true);
-           }
-          else
-          {
-            if(frmusu.isClosed())
-            {
-            frmusu=new ABMUsuarios();
-            this.desktop.add(frmusu);
-         // this.escritorio.add(jScrollPane1.add(formrp));
-            frmusu.setVisible(rootPaneCheckingEnabled);
-            frmusu.setMaximum(true);
+        try {
+            if (frmusu == null) {
+                frmusu = new ABMUsuarios();
+                this.desktop.add(frmusu);
+                // this.escritorio.add(jScrollPane1.add(formrp));
+                frmusu.setVisible(rootPaneCheckingEnabled);
+                frmusu.setMaximum(true);
+            } else {
+                if (frmusu.isClosed()) {
+                    frmusu = new ABMUsuarios();
+                    this.desktop.add(frmusu);
+                    // this.escritorio.add(jScrollPane1.add(formrp));
+                    frmusu.setVisible(rootPaneCheckingEnabled);
+                    frmusu.setMaximum(true);
+                }
             }
-          }
-        }
-     catch(Exception ex)  {
-         
-      }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        } catch (Exception ex) {
 
+        }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
