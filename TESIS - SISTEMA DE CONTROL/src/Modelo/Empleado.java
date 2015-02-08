@@ -17,7 +17,7 @@ public class Empleado {
     private String nombre;
     private String apellido;
     private String domicilio;
-    private List<Registro> reg = new ArrayList<Registro>();
+    
     private long telefono;
     private Localidad olocalidad;
 
@@ -45,13 +45,13 @@ public class Empleado {
         this.domicilio = domicilio;
     }
 
-    public List<Registro> getReg() {
-        return reg;
-    }
-
-    public void setReg(List<Registro> reg) {
-        this.reg = reg;
-    }
+//    public List<Registro> getReg() {
+//        return reg;
+//    }
+//
+//    public void setReg(List<Registro> reg) {
+//        this.reg = reg;
+//    }
 
     public long getTelefono() {
         return telefono;

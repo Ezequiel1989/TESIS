@@ -16,15 +16,6 @@
         <many-to-one name="olocalidad" 
         column="idlocalidades"
         not-null="true"/>
-        <list name="reg"  cascade="all" inverse="false"  >
-            <key>
-                <column name="IDEMPLEADOS"  />
-            </key>
-            <list-index>
-                <column name="Idreg"  />
-            </list-index>
-            <one-to-many class="Modelo.Registro" />
-        </list>
     </class>
 
 </hibernate-mapping>
