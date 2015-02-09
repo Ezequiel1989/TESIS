@@ -12,6 +12,7 @@ import Modelo.Localidad;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +25,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
     EmpleadoControladora demp = new EmpleadoControladora();
     int nroFilas = 0;
     List<Empleado> listaempleados = null;
+    Empleado empleado = null;
 
     /**
      * Creates new form ABMEmpleado
@@ -136,7 +138,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
         label5.setText("LOCALIDAD");
 
-        btn_agregar.setLabel("AGREGAR");
+        btn_agregar.setLabel("GUARDAR");
         btn_agregar.setName(""); // NOI18N
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +147,11 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         });
 
         btn_modif.setLabel("MODIFICAR");
+        btn_modif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modifActionPerformed(evt);
+            }
+        });
 
         btn_borrar.setLabel("BORRAR");
         btn_borrar.addActionListener(new java.awt.event.ActionListener() {
@@ -310,6 +317,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         this.txt_apellido.setText("");
         this.txt_domicilio.setText("");
         this.txt_telefono.setText("");
+        this.txt_nombre1.setText("");
     }
 
     public void habilitar() {
@@ -325,17 +333,45 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         this.txt_domicilio.enable(false);
         this.txt_telefono.enable(false);
     }
-
+    public void limpiarTabla(JTable tabla) {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+            int filas = tabla.getRowCount();
+            for (int i = 0; filas > i; i++) {
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         Localidad oloc = null;
         Empleado emp = null;
         try {
             if (!"".equals(txt_nombre.getText()) && !"".equals(txt_apellido.getText()) && !"".equals(txt_domicilio.getText()) && !"".equals(txt_telefono.getText())) {
-                oloc = dloc.obtenLocalidadNombre(cmb_localidad.getSelectedItem().toString());
-                emp = new Empleado(txt_nombre.getText(), txt_apellido.getText(), txt_domicilio.getText(), Long.valueOf(txt_telefono.getText()), oloc);
-                demp.guardaEmpleado(emp);
-                JOptionPane.showMessageDialog(null, "Empleado Cargado Exitosamente");
-                limpiar();
+                if (empleado == null) {
+                    oloc = dloc.obtenLocalidadNombre(cmb_localidad.getSelectedItem().toString());
+                    emp = new Empleado(txt_nombre.getText(), txt_apellido.getText(), txt_domicilio.getText(), Long.valueOf(txt_telefono.getText()), oloc);
+                    demp.guardaEmpleado(emp);
+                    JOptionPane.showMessageDialog(null, "Empleado Cargado Exitosamente");
+                    limpiar();
+                    deshabilitar();
+                    empleado = null;
+                    limpiarTabla(tabla);
+                } else {
+                    oloc = dloc.obtenLocalidadNombre(cmb_localidad.getSelectedItem().toString());
+                    empleado.setApellido(txt_apellido.getText());
+                    empleado.setDomicilio(txt_domicilio.getText());
+                    empleado.setNombre(txt_nombre.getText());
+                    empleado.setOlocalidad(oloc);
+                    empleado.setTelefono(Long.parseLong(txt_telefono.getText()));
+                    demp.actualizaEmpleado(empleado);
+                    JOptionPane.showMessageDialog(null, "Empleado Modificado");
+                    limpiar();
+                    deshabilitar();
+                    empleado = null;
+                    limpiarTabla(tabla);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debe Completar Todos Los Campos");
             }
@@ -363,9 +399,11 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         limpiar();
         habilitar();
         txt_nombre.requestFocus();
+        empleado = null;
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiarTabla(tabla);
         listaempleados = demp.obtenListaEmpleadosNombre(txt_nombre1.getText());
         tabla.getColumnModel().getColumn(0).setMaxWidth(0);
         tabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -391,11 +429,15 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
         // TODO add your handling code here:
-        listaempleados = demp.obtenListaEmpleados();
-        if (!listaempleados.isEmpty()) {
-            for (Empleado e : listaempleados) {
-                System.out.println(e.getOlocalidad().getIdlocalidades());
-            }
+        if (!"".equals(txt_nombre.getText()) && empleado != null) {
+            demp.eliminaEmpleado(empleado);
+            limpiarTabla(tabla);            
+            JOptionPane.showMessageDialog(null, "Empleado Eliminado Correctamente");
+            limpiar();
+            deshabilitar();
+            empleado = null;
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un Empleado para Eliminarlo");
         }
 
 
@@ -403,16 +445,31 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         // TODO add your handling code here:
-        Empleado empleado = null;
-                if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
             int fila = tabla.rowAtPoint(evt.getPoint());
             int columna = tabla.columnAtPoint(evt.getPoint());
             if ((fila > -1) && (columna > -1)) {
-                
+                Localidad oloc = dloc.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 3).toString());
+                empleado = new Empleado(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 0).toString()), modeloDeMiTabla.getValueAt(fila, 1).toString(), modeloDeMiTabla.getValueAt(fila, 2).toString(), modeloDeMiTabla.getValueAt(fila, 4).toString(), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 5).toString()), oloc);
+                txt_nombre.setText(empleado.getNombre());
+                txt_apellido.setText(empleado.getApellido());
+                txt_domicilio.setText(empleado.getDomicilio());
+                txt_telefono.setText(String.valueOf(empleado.getTelefono()));
+                cmb_localidad.setSelectedItem(oloc.getLocalidad());
+                deshabilitar();
             }
         }
     }//GEN-LAST:event_tablaMouseClicked
+
+    private void btn_modifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifActionPerformed
+        // TODO add your handling code here:
+        if (!"".equals(txt_nombre.getText()) &&  empleado != null) {
+            habilitar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un Empleado para Modificarlo");
+        }       
+    }//GEN-LAST:event_btn_modifActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label EMPLEADOS;
@@ -437,4 +494,6 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
     private java.awt.TextField txt_nombre1;
     private java.awt.TextField txt_telefono;
     // End of variables declaration//GEN-END:variables
+
+
 }

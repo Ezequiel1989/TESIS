@@ -228,7 +228,7 @@
     </Component>
     <Component class="java.awt.Button" name="btn_agregar">
       <Properties>
-        <Property name="label" type="java.lang.String" value="AGREGAR"/>
+        <Property name="label" type="java.lang.String" value="GUARDAR"/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <Events>
@@ -239,6 +239,9 @@
       <Properties>
         <Property name="label" type="java.lang.String" value="MODIFICAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modifActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Button" name="btn_borrar">
       <Properties>

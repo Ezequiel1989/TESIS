@@ -101,4 +101,13 @@ public class Empleado {
             this.setTelefono(tel);
             this.setOlocalidad(loc);
         };
+            public Empleado(Long i, String nomb, String ape, String dom, long tel, Localidad loc)
+        {
+            this.setIdempleados(i);
+            this.setNombre(nomb);
+            this.setApellido(ape);
+            this.setDomicilio(dom);
+            this.setTelefono(tel);
+            this.setOlocalidad(loc);
+        };
 }

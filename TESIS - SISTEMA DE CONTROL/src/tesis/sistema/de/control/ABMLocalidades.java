@@ -255,7 +255,6 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
                 oLocalidad = null;
                 limpiarTabla(tabla);
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         }
@@ -293,7 +292,7 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_modifActionPerformed
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        if (!"".equals(txt_localidad.getText())) {
+        if (!"".equals(txt_localidad.getText()) && oLocalidad != null) {
             dloc.eliminaLocalidad(oLocalidad);
             limpiarTabla(tabla);
             JOptionPane.showMessageDialog(null, "Localidad Eliminada Correctamente");
