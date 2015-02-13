@@ -56,7 +56,7 @@ import org.bridj.cpp.CPPRuntime;
 public class OpenIMAJGrabber extends CPPObject {
 
 	static {
-		Platform.addEmbeddedLibraryResourceRoot("com/github/sarxos/webcam/ds/buildin/lib/");
+		Platform.addEmbeddedLibraryResourceRoot("/dist/lib");
 		BridJ.register();
 	}
 
