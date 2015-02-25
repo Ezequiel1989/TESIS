@@ -5,6 +5,7 @@
  */
 package tesis.sistema.de.control;
 
+
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
@@ -110,7 +111,9 @@ public class Logueo extends javax.swing.JFrame {
                     this.setVisible(false);
                     frame1.setVisible(true);                    
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usuario Correcto");
+                    final Fichaje frame1 = new Fichaje(); 
+                    this.setVisible(false);
+                    frame1.setVisible(true); 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario Erroneo");
