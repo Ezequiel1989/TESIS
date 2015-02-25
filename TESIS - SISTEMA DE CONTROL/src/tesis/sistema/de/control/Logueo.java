@@ -110,11 +110,7 @@ public class Logueo extends javax.swing.JFrame {
                     final ModuloAdministracion frame1 = new ModuloAdministracion(); 
                     this.setVisible(false);
                     frame1.setVisible(true);                    
-                } else {
-                    final Fichaje frame1 = new Fichaje(); 
-                    this.setVisible(false);
-                    frame1.setVisible(true); 
-                }
+                } 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario Erroneo");
             }
