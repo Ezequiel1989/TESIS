@@ -7,7 +7,7 @@ package Modelo;
 
 /**
  *
- * @author matias
+ * @author Ezequiel
  */
 public class Localidad {
 

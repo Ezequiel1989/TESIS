@@ -9,13 +9,10 @@ import tesis.sistema.de.control.HibernateUtil;
 
 /**
  *
- * @author H Nisenbaum
+ * @author Ezequiel
  */
 /**
- * Esta clase representa el acceso a datos de Usuario
- *
- * @author Administrador
- */
+*/
 public class UsuarioDAO {
 
     private Session sesion;

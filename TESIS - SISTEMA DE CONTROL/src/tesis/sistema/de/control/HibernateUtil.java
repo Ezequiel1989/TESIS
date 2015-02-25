@@ -7,7 +7,7 @@ package tesis.sistema.de.control;
 
 /**
  *
- * @author Administrador
+ * @author Ezequiel
  */
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory; 
@@ -15,7 +15,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * Esta clase representa el administrador de session de Hibernate
- * @author Administrador
+ *
  */
 public class HibernateUtil
 {  

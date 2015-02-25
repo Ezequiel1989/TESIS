@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ezequiel x 2
+ * @author Ezequiel
  */
 public class ABMEmpleados extends javax.swing.JInternalFrame {
 
