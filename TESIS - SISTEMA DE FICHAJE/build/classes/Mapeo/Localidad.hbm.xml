@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="Modelo.Localidad" table="LOCALIDADES">
+        <id name="idlocalidades" column="IDLOCALIDADES">
+            <generator class="identity" />
+        </id>
+        <property name="localidad" type="string" column="LOCALIDAD" />
+    </class>
+</hibernate-mapping>
