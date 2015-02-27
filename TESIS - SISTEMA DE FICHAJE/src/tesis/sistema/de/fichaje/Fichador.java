@@ -71,12 +71,13 @@ public class Fichador extends javax.swing.JFrame {
                             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                             try {
                                 result = new MultiFormatReader().decode(bitmap);                                
-                                this.wait(3000);
+                                //this.wait(3000);
                                 webSource.release();
                                 texto = result.getText();
                                 final Saludo frame1 = new Saludo(texto);
                                 frame1.setVisible(true);
                                 webSource = new VideoCapture(0);
+                                this.wait(5005);
                             } catch (NotFoundException e) {
                                 // fall thru, it means there is no QR code in image
                             }

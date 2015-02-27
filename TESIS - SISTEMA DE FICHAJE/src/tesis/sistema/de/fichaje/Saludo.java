@@ -38,7 +38,7 @@ public class Saludo extends javax.swing.JFrame {
         t.start();
     }
 
-    Timer t = new Timer(2000, new ActionListener() {
+    Timer t = new Timer(5000, new ActionListener() {
 
         @Override
         public void actionPerformed(ActionEvent e) {
