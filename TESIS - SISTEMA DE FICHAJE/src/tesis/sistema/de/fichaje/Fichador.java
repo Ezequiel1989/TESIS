@@ -14,12 +14,15 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import static java.lang.Thread.sleep;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -46,6 +49,7 @@ public class Fichador extends javax.swing.JFrame {
     MatOfByte mem = new MatOfByte();
 
     String File_path = "";
+    String texto = "";
 
     class DaemonThread implements Runnable {
 
@@ -66,10 +70,13 @@ public class Fichador extends javax.swing.JFrame {
                             LuminanceSource source = new BufferedImageLuminanceSource(buff);
                             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                             try {
-                                result = new MultiFormatReader().decode(bitmap);
+                                result = new MultiFormatReader().decode(bitmap);                                
                                 this.wait(3000);
-                                JOptionPane.showMessageDialog(null, "puto" + result.getText());
-
+                                webSource.release();
+                                texto = result.getText();
+                                final Saludo frame1 = new Saludo(texto);
+                                frame1.setVisible(true);
+                                webSource = new VideoCapture(0);
                             } catch (NotFoundException e) {
                                 // fall thru, it means there is no QR code in image
                             }
