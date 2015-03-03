@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="07aec051-9287-404f-af6b-e165ced47b45">
-	<queryString language="SQL">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="desde Localidad" class="java.lang.Integer">
+		<parameterDescription><![CDATA[IdLocalidades]]></parameterDescription>
+	</parameter>
+	<parameter name="Hasta Localidad" class="java.lang.Integer">
+		<parameterDescription><![CDATA[IdLocalidades]]></parameterDescription>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT * 
 FROM  `Empleados` 
-JOIN localidades ON empleados.idlocalidades = localidades.idlocalidades]]>
+JOIN localidades ON empleados.idlocalidades = localidades.idlocalidades where empleados.idlocalidades between $P{desde Localidad} and $P{Hasta Localidad}]]>
 	</queryString>
+	<field name="IDEMPLEADOS" class="java.lang.Long"/>
 	<field name="NOMBRE" class="java.lang.String"/>
 	<field name="APELLIDO" class="java.lang.String"/>
+	<field name="TELEFONO" class="java.lang.Long"/>
+	<field name="DOMICILIO" class="java.lang.String"/>
+	<field name="idlocalidades" class="java.lang.Long"/>
 	<field name="LOCALIDAD" class="java.lang.String"/>
 	<group name="LOCALIDAD">
 		<groupExpression><![CDATA[$F{LOCALIDAD}]]></groupExpression>
