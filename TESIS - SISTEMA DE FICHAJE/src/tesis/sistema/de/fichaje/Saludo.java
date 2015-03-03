@@ -5,6 +5,8 @@
  */
 package tesis.sistema.de.fichaje;
 
+import Controladora.EmpleadoControladora;
+import Modelo.Empleado;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -27,13 +29,15 @@ import org.opencv.highgui.Highgui;
  * @author Ezequiel
  */
 public class Saludo extends javax.swing.JFrame {
-
+    EmpleadoControladora doc = new EmpleadoControladora();
+    Empleado empleado = null;
     /**
      * Creates new form Saludo
      */
     public Saludo(String codigo) {
-        initComponents();
-        jLabel1.setText("bienvenido " + codigo);
+        initComponents();        
+        empleado = doc.obtenEmpleadoDNI(Long.parseLong(codigo));
+        jLabel1.setText("Bienvenido " + empleado.getApellido() + " " + empleado.getNombre());
 //        this.setVisible(false);
         t.start();
     }
@@ -61,6 +65,7 @@ public class Saludo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Gisha", 1, 36)); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,17 +75,18 @@ public class Saludo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(614, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(115, 115, 115)
                 .addComponent(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 

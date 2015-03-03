@@ -16,5 +16,8 @@
     <property name="hbm2ddl.auto">update</property>
     <!-- Archivos de mapeo -->
     <property name="hibernate.connection.password">romeo1</property>
+    <mapping resource="Mapeo/Registro.hbm.xml"/>
+    <mapping resource="Mapeo/Empleado.hbm.xml"/>
+    <mapping resource="Mapeo/Localidad.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

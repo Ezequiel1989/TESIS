@@ -17,7 +17,7 @@ public class Empleado {
     private String nombre;
     private String apellido;
     private String domicilio;
-    
+    private long documento;
     private long telefono;
     private Localidad olocalidad;
 
@@ -83,25 +83,27 @@ public class Empleado {
         public   Empleado()
         {};
         
-        public Empleado(String nomb, String ape, String dom, long tel)
+        public Empleado(String nomb, String ape, String dom, long tel, long doc)
         {
             this.setNombre(nomb);
             this.setApellido(ape);
             this.setDomicilio(dom);
             this.setTelefono(tel);
+            this.setDocumento(doc);
         }
         ;
         
         
-          public Empleado(String nomb, String ape, String dom, long tel, Localidad loc)
+          public Empleado(String nomb, String ape, String dom, long tel, long doc, Localidad loc)
         {
             this.setNombre(nomb);
             this.setApellido(ape);
             this.setDomicilio(dom);
             this.setTelefono(tel);
             this.setOlocalidad(loc);
+            this.setDocumento(doc);
         };
-            public Empleado(Long i, String nomb, String ape, String dom, long tel, Localidad loc)
+            public Empleado(Long i, String nomb, String ape, String dom, long tel, long doc, Localidad loc)
         {
             this.setIdempleados(i);
             this.setNombre(nomb);
@@ -109,5 +111,14 @@ public class Empleado {
             this.setDomicilio(dom);
             this.setTelefono(tel);
             this.setOlocalidad(loc);
+            this.setDocumento(doc);
         };
+
+    public long getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(long documento) {
+        this.documento = documento;
+    }
 }
