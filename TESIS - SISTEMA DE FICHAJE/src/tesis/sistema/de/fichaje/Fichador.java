@@ -92,7 +92,7 @@ public class Fichador extends javax.swing.JFrame {
                                 tim.start();
                                 this.wait(5005);
                             } catch (NotFoundException e) {
-                                // fall thru, it means there is no QR code in image
+                                JOptionPane.showMessageDialog(null, e.getMessage());
                             }
 
                             if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
@@ -102,7 +102,7 @@ public class Fichador extends javax.swing.JFrame {
                                 }
                             }
                         } catch (Exception ex) {
-                            System.out.println("Error");
+                            JOptionPane.showMessageDialog(null, ex.getMessage());
                         }
                     }
                 }
