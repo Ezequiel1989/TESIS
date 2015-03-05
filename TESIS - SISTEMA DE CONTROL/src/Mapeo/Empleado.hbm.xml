@@ -13,7 +13,7 @@
         <property name="apellido" type="string" column="APELLIDO" />
         <property name="telefono" type="long" column="TELEFONO" />
         <property name="domicilio" type="string" column="DOMICILIO" />     
-        <property name="documento" type="string" column="DOCUMENTO" />   
+        <property name="documento" type="long" column="DOCUMENTO" unique="true" />   
         <many-to-one name="olocalidad" 
         column="idlocalidades"
         not-null="true"/>

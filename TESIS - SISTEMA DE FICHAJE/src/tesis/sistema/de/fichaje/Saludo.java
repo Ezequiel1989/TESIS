@@ -6,7 +6,11 @@
 package tesis.sistema.de.fichaje;
 
 import Controladora.EmpleadoControladora;
+import Controladora.RegistroControladora;
+import DAO.EmpleadoDAO;
+import DAO.RegistroDAO;
 import Modelo.Empleado;
+import Modelo.Registro;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -14,12 +18,15 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.rp.util.DateTime;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import org.opencv.highgui.Highgui;
@@ -29,16 +36,34 @@ import org.opencv.highgui.Highgui;
  * @author Ezequiel
  */
 public class Saludo extends javax.swing.JFrame {
-    EmpleadoControladora doc = new EmpleadoControladora();
+
+    EmpleadoControladora controlemp = new EmpleadoControladora();
     Empleado empleado = null;
+    RegistroControladora registroemp = new RegistroControladora();
+
     /**
      * Creates new form Saludo
      */
-    public Saludo(String codigo) {
-        initComponents();        
-        empleado = doc.obtenEmpleadoDNI(Long.parseLong(codigo));
-        jLabel1.setText("Bienvenido " + empleado.getApellido() + " " + empleado.getNombre());
-//        this.setVisible(false);
+    public Saludo(String codigo, String dia, String hora) {
+        initComponents();
+        empleado = controlemp.obtenEmpleadoDNI(Long.parseLong(codigo));
+        try {
+            RegistroDAO emp = new RegistroDAO();
+            Registro reg = new Registro(dia, hora, empleado);
+            emp.guardaRegistro(reg);
+            jLabel1.setText("Bienvenido " + empleado.getApellido() + " " + empleado.getNombre());
+            jLabel2.setText("Dia: " + dia + " Hora: " + hora);
+        } catch (Exception ex) {
+            jLabel1.setText("Error");
+            if(empleado == null)
+            {
+                jLabel2.setText("Empleado Inexistente");
+            }
+            else
+            {
+                jLabel2.setText("Hubo un error en la grabacion, reintente");
+            }
+        }
         t.start();
     }
 
@@ -62,27 +87,35 @@ public class Saludo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Gisha", 1, 36)); // NOI18N
         jLabel1.setText("jLabel1");
 
+        jLabel2.setFont(new java.awt.Font("Gisha", 1, 36)); // NOI18N
+        jLabel2.setText("Hora de Fichado:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(jLabel2)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,5 +125,6 @@ public class Saludo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

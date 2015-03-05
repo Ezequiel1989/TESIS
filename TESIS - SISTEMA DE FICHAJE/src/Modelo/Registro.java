@@ -5,7 +5,9 @@
  */
 package Modelo;
 
-import java.util.Date;
+import com.rp.util.DateTime;
+import java.sql.Time;
+import java.sql.Date;
 
 /**
  *
@@ -13,8 +15,8 @@ import java.util.Date;
  */
 public class Registro {
     private long idregistros;
-    private Date registro;
-    private String foto;
+    private String dia;
+    private String hora;
     private Empleado empleado;
 
     public long getIdregistros() {
@@ -25,22 +27,7 @@ public class Registro {
         this.idregistros = idregistro;
     }
 
-    public Date getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(Date registro) {
-        this.registro = registro;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
+    
     public Empleado getEmpleado() {
         return empleado;
     }
@@ -54,17 +41,33 @@ public class Registro {
         
     };
     
-    public Registro(Date reg, String image, Empleado emp)
+    public Registro(String dia, String hora, Empleado emp)
     {
-        this.setRegistro(reg);
-        this.setFoto(image);
+        this.setDia(dia);
+        this.setHora(hora);
         this.setEmpleado(emp);
     };
     
-    public Registro(Date reg, String image)
+    public Registro(String dia, String hora)
     {
-        this.setRegistro(reg);
-        this.setFoto(image);
+        this.setDia(dia);
+        this.setHora(hora);
         
     };
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 }

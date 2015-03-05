@@ -6,7 +6,9 @@
 package tesis.sistema.de.fichaje;
 
 import Controladora.EmpleadoControladora;
+import DAO.RegistroDAO;
 import Modelo.Empleado;
+import Modelo.Registro;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -22,6 +24,12 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import static java.lang.Thread.sleep;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -78,7 +86,7 @@ public class Fichador extends javax.swing.JFrame {
                                 webSource.release();
                                 tim.stop();
                                 texto = result.getText();
-                                final Saludo frame1 = new Saludo(texto);
+                                final Saludo frame1 = new Saludo(texto, lbl_dia.getText(), lbl_hora.getText());
                                 frame1.setVisible(true);
                                 webSource = new VideoCapture(0);
                                 tim.start();
@@ -120,6 +128,7 @@ public class Fichador extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbl_hora = new javax.swing.JLabel();
+        lbl_dia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -156,6 +165,8 @@ public class Fichador extends javax.swing.JFrame {
 
         lbl_hora.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
 
+        lbl_dia.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,20 +183,24 @@ public class Fichador extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbl_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_hora, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_hora, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(lbl_dia, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
@@ -225,8 +240,8 @@ public class Fichador extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             DateTime hora = new DateTime();
-            lbl_hora.setText(hora.getFullDate().replace("_", "/") + " " + hora.getFullTime().replace("_", ":"));
-
+            lbl_dia.setText(hora.getFullDate().replace("_", "/"));
+            lbl_hora.setText(hora.getFullTime().replace("_", ":").substring(0, 8));
         }
 
     });
@@ -283,6 +298,7 @@ public class Fichador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_dia;
     private javax.swing.JLabel lbl_hora;
     // End of variables declaration//GEN-END:variables
 }
