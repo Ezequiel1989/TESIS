@@ -5,7 +5,6 @@
  */
 package tesis.sistema.de.control;
 
-
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
@@ -58,6 +57,11 @@ public class Logueo extends javax.swing.JFrame {
         txt_usuario.setToolTipText("Ingrese Usuario");
 
         txt_password.setToolTipText("Ingrese Password");
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,25 +104,51 @@ public class Logueo extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        String password = txt_password.getText();
-        String usuario = txt_usuario.getText();
-        Usuario confirmar = DAOUsuario.confirmarUsuario(usuario, password);
-
         try {
+            String password = txt_password.getText();
+            String usuario = txt_usuario.getText();
+            Usuario confirmar = DAOUsuario.confirmarUsuario(usuario, password);
             if (confirmar != null) {
                 if (confirmar.getUsuario().toString().equals("admin")) {
-                    final ModuloAdministracion frame1 = new ModuloAdministracion(); 
+                    final ModuloAdministracion frame1 = new ModuloAdministracion();
                     this.setVisible(false);
-                    frame1.setVisible(true);                    
-                } 
+                    frame1.setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario Erroneo");
             }
         } catch (Exception ex) {
-
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void txt_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyReleased
+        // TODO add your handling code here:
+        int key = evt.getKeyCode();
+            if (key == evt.VK_ENTER) {                
+                entrar();
+                txt_usuario.requestFocus();
+            }
+    }//GEN-LAST:event_txt_passwordKeyReleased
+    public void entrar()
+    {
+        try {            
+            String password = txt_password.getText();
+            String usuario = txt_usuario.getText();
+            Usuario confirmar = DAOUsuario.confirmarUsuario(usuario, password);
+            if (confirmar != null) {
+                if (confirmar.getUsuario().toString().equals("admin")) {
+                    final ModuloAdministracion frame1 = new ModuloAdministracion();
+                    this.setVisible(false);
+                    frame1.setVisible(true);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario Erroneo");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
     /**
      * @param args the command line arguments
      */

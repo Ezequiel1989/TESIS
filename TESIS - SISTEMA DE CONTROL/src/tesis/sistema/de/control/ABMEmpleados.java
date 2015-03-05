@@ -341,7 +341,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         this.txt_telefono.setText("");
         this.txt_nombre1.setText("");
         this.txt_documento.setText("");
-        
+
     }
 
     public void habilitar() {
@@ -375,7 +375,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
         Localidad oloc = null;
         Empleado emp = null;
         try {
-            if (!"".equals(txt_nombre.getText()) && !"".equals(txt_apellido.getText()) && !"".equals(txt_domicilio.getText()) && !"".equals(txt_telefono.getText())&& !"".equals(txt_documento.getText())) {
+            if (!"".equals(txt_nombre.getText()) && !"".equals(txt_apellido.getText()) && !"".equals(txt_domicilio.getText()) && !"".equals(txt_telefono.getText()) && !"".equals(txt_documento.getText())) {
                 if (empleado == null) {
                     oloc = dloc.obtenLocalidadNombre(cmb_localidad.getSelectedItem().toString());
                     emp = new Empleado(txt_nombre.getText(), txt_apellido.getText(), txt_domicilio.getText(), Long.valueOf(txt_telefono.getText()), Long.valueOf(txt_documento.getText()), oloc);
@@ -432,43 +432,50 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpiarTabla(tabla);
-        listaempleados = demp.obtenListaEmpleadosNombre(txt_nombre1.getText());
-        tabla.getColumnModel().getColumn(0).setMaxWidth(0);
-        tabla.getColumnModel().getColumn(0).setMinWidth(0);
-        tabla.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
-        tabla.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
-        if (!listaempleados.isEmpty()) {
-            DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
-            for (Empleado e : listaempleados) {
-                modeloDeMiTabla.addRow(new Object[nroFilas]);
-                tabla.setValueAt(e.getIdempleados(), nroFilas, 0);
-                tabla.setValueAt(e.getNombre(), nroFilas, 1);
-                tabla.setValueAt(e.getApellido(), nroFilas, 2);
-                Localidad oloc = dloc.obtenLocalidad(e.getOlocalidad().getIdlocalidades());
-                tabla.setValueAt(oloc.getLocalidad(), nroFilas, 4);
-                tabla.setValueAt(e.getDomicilio(), nroFilas, 5);
-                tabla.setValueAt(e.getTelefono(), nroFilas, 6);
-                tabla.setValueAt(e.getDocumento(), nroFilas, 3);
-                nroFilas++;
-            }
-            nroFilas = 0;
+        try {
+            listaempleados = demp.obtenListaEmpleadosNombre(txt_nombre1.getText());
+            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tabla.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+            if (!listaempleados.isEmpty()) {
+                DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
+                for (Empleado e : listaempleados) {
+                    modeloDeMiTabla.addRow(new Object[nroFilas]);
+                    tabla.setValueAt(e.getIdempleados(), nroFilas, 0);
+                    tabla.setValueAt(e.getNombre(), nroFilas, 1);
+                    tabla.setValueAt(e.getApellido(), nroFilas, 2);
+                    Localidad oloc = dloc.obtenLocalidad(e.getOlocalidad().getIdlocalidades());
+                    tabla.setValueAt(oloc.getLocalidad(), nroFilas, 4);
+                    tabla.setValueAt(e.getDomicilio(), nroFilas, 5);
+                    tabla.setValueAt(e.getTelefono(), nroFilas, 6);
+                    tabla.setValueAt(e.getDocumento(), nroFilas, 3);
+                    nroFilas++;
+                }
+                nroFilas = 0;
 
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(txt_nombre.getText()) && empleado != null) {
-            demp.eliminaEmpleado(empleado);
-            limpiarTabla(tabla);
-            JOptionPane.showMessageDialog(null, "Empleado Eliminado Correctamente");
-            limpiar();
-            deshabilitar();
-            empleado = null;
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un Empleado para Eliminarlo");
+        try {
+            if (!"".equals(txt_nombre.getText()) && empleado != null) {
+                demp.eliminaEmpleado(empleado);
+                limpiarTabla(tabla);
+                JOptionPane.showMessageDialog(null, "Empleado Eliminado Correctamente");
+                limpiar();
+                deshabilitar();
+                empleado = null;
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un Empleado para Eliminarlo");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-
 
     }//GEN-LAST:event_btn_borrarActionPerformed
 

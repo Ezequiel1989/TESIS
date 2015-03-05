@@ -235,28 +235,31 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-
-        if (!"".equals(txt_localidad.getText())) {
-            if (oLocalidad == null) {
-                String n = txt_localidad.getText();
-                oLocalidad = new Localidad(n);
-                dloc.guardaLocalidad(oLocalidad);
-                JOptionPane.showMessageDialog(null, "Localidad Registrada");
-                this.txt_localidad.setText("");
-                this.txt_localidad.enable(false);
-                oLocalidad = null;
-                limpiarTabla(tabla);
+        try {
+            if (!"".equals(txt_localidad.getText())) {
+                if (oLocalidad == null) {
+                    String n = txt_localidad.getText();
+                    oLocalidad = new Localidad(n);
+                    dloc.guardaLocalidad(oLocalidad);
+                    JOptionPane.showMessageDialog(null, "Localidad Registrada");
+                    this.txt_localidad.setText("");
+                    this.txt_localidad.enable(false);
+                    oLocalidad = null;
+                    limpiarTabla(tabla);
+                } else {
+                    oLocalidad.setLocalidad(txt_localidad.getText());
+                    dloc.actualizaLocalidad(oLocalidad);
+                    JOptionPane.showMessageDialog(null, "Localidad Modificada");
+                    this.txt_localidad.setText("");
+                    this.txt_localidad.enable(false);
+                    oLocalidad = null;
+                    limpiarTabla(tabla);
+                }
             } else {
-                oLocalidad.setLocalidad(txt_localidad.getText());
-                dloc.actualizaLocalidad(oLocalidad);
-                JOptionPane.showMessageDialog(null, "Localidad Modificada");
-                this.txt_localidad.setText("");
-                this.txt_localidad.enable(false);
-                oLocalidad = null;
-                limpiarTabla(tabla);
+                JOptionPane.showMessageDialog(null, "Complete todos los campos");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
 
@@ -292,13 +295,17 @@ public class ABMLocalidades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_modifActionPerformed
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        if (!"".equals(txt_localidad.getText()) && oLocalidad != null) {
-            dloc.eliminaLocalidad(oLocalidad);
-            limpiarTabla(tabla);
-            JOptionPane.showMessageDialog(null, "Localidad Eliminada Correctamente");
-            oLocalidad = null;
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una Localidad para Eliminarla");
+        try {
+            if (!"".equals(txt_localidad.getText()) && oLocalidad != null) {
+                dloc.eliminaLocalidad(oLocalidad);
+                limpiarTabla(tabla);
+                JOptionPane.showMessageDialog(null, "Localidad Eliminada Correctamente");
+                oLocalidad = null;
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una Localidad para Eliminarla");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_btn_borrarActionPerformed
 
