@@ -39,15 +39,15 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chk_emp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="label7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField3" min="-2" pref="121" max="-2" attributes="0"/>
+                      <Component id="txt_desde" min="-2" pref="121" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="label8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField4" min="-2" pref="121" max="-2" attributes="0"/>
+                      <Component id="txt_hasta" min="-2" pref="121" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -112,10 +112,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chk_emp" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="label7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_desde" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_hasta" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -130,11 +130,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+    <Component class="javax.swing.JFormattedTextField" name="txt_hasta">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: 01/01/2015"/>
       </Properties>
     </Component>
     <Component class="java.awt.Label" name="label9">
@@ -161,6 +162,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.TextField" name="txt_nombre">
     </Component>
@@ -170,7 +174,7 @@
         <Property name="text" type="java.lang.String" value="BUSCAR POR NOMBRE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="chk_emp">
       <Properties>
         <Property name="text" type="java.lang.String" value="Afecta a todos los empleados"/>
       </Properties>
@@ -187,11 +191,12 @@
         <Property name="text" type="java.lang.String" value="HASTA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+    <Component class="javax.swing.JFormattedTextField" name="txt_desde">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: 01/01/2015"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -239,6 +244,9 @@
       </Properties>
     </Component>
     <Component class="java.awt.TextField" name="txt_empleado">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

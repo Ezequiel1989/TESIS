@@ -7,8 +7,12 @@ package tesis.sistema.de.control;
 
 import DAO.EmpleadoDAO;
 import DAO.LocalidadDAO;
+import DAO.NovedadDAO;
 import Modelo.Empleado;
 import Modelo.Localidad;
+import Modelo.Novedad;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -19,20 +23,25 @@ import javax.swing.table.DefaultTableModel;
  * @author Ezequiel
  */
 public class ABMNovedades extends javax.swing.JFrame {
+
     List<Empleado> listaempleados;
     EmpleadoDAO demp = new EmpleadoDAO();
     LocalidadDAO dloc = new LocalidadDAO();
     int nroFilas = 0;
     Empleado empleado = null;
+    NovedadDAO dnov = new NovedadDAO();
+
     /**
      * Creates new form ABMNovedade
      */
     public ABMNovedades() {
         initComponents();
     }
-public void limpiar() {
-        this.txt_nombre.setText("");
 
+    public void limpiar() {
+        this.txt_nombre.setText("");
+        this.txt_novedad.setText("");
+        this.txt_empleado.setText("");
     }
 
     public void habilitar() {
@@ -54,6 +63,7 @@ public void limpiar() {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,17 +73,17 @@ public void limpiar() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        txt_hasta = new javax.swing.JFormattedTextField();
         label9 = new java.awt.Label();
         txt_novedad = new java.awt.TextField();
         EMPLEADOS = new java.awt.Label();
         jButton2 = new javax.swing.JButton();
         txt_nombre = new java.awt.TextField();
         label6 = new java.awt.Label();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chk_emp = new javax.swing.JCheckBox();
         label7 = new java.awt.Label();
         label8 = new java.awt.Label();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        txt_desde = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
@@ -84,7 +94,8 @@ public void limpiar() {
         setMaximumSize(new java.awt.Dimension(651, 800));
         setMinimumSize(new java.awt.Dimension(651, 800));
 
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txt_hasta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txt_hasta.setToolTipText("Ej: 01/01/2015");
 
         label9.setAlignment(java.awt.Label.CENTER);
         label9.setText("NOVEDAD");
@@ -95,11 +106,16 @@ public void limpiar() {
         EMPLEADOS.setText("NOVEDADES");
 
         jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         label6.setAlignment(java.awt.Label.CENTER);
         label6.setText("BUSCAR POR NOMBRE");
 
-        jCheckBox1.setText("Afecta a todos los empleados");
+        chk_emp.setText("Afecta a todos los empleados");
 
         label7.setAlignment(java.awt.Label.CENTER);
         label7.setText("DESDE");
@@ -107,7 +123,8 @@ public void limpiar() {
         label8.setAlignment(java.awt.Label.CENTER);
         label8.setText("HASTA");
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txt_desde.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txt_desde.setToolTipText("Ej: 01/01/2015");
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +159,8 @@ public void limpiar() {
         label10.setAlignment(java.awt.Label.CENTER);
         label10.setText("EMPLEADO");
 
+        txt_empleado.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,15 +174,15 @@ public void limpiar() {
                         .addComponent(txt_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(chk_emp)
                         .addGap(51, 51, 51)
                         .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -212,10 +231,10 @@ public void limpiar() {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1)
+                            .addComponent(chk_emp)
                             .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,28 +278,69 @@ public void limpiar() {
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2) {
-            DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
-            int fila = tabla.rowAtPoint(evt.getPoint());
-            int columna = tabla.columnAtPoint(evt.getPoint());
-            if ((fila > -1) && (columna > -1)) {
-                Localidad oloc = dloc.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 4).toString());
-                empleado = new Empleado(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 0).toString()), modeloDeMiTabla.getValueAt(fila, 1).toString(), modeloDeMiTabla.getValueAt(fila, 2).toString(), modeloDeMiTabla.getValueAt(fila, 5).toString(), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 6).toString()), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 3).toString()), oloc);
-                txt_empleado.setText(empleado.getNombre() + " " +empleado.getApellido());
-                deshabilitar();
+        try {
+            if (evt.getClickCount() == 2) {
+                DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
+                int fila = tabla.rowAtPoint(evt.getPoint());
+                int columna = tabla.columnAtPoint(evt.getPoint());
+                if ((fila > -1) && (columna > -1)) {
+                    Localidad oloc = dloc.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 4).toString());
+                    empleado = new Empleado(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 0).toString()), modeloDeMiTabla.getValueAt(fila, 1).toString(), modeloDeMiTabla.getValueAt(fila, 2).toString(), modeloDeMiTabla.getValueAt(fila, 5).toString(), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 6).toString()), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 3).toString()), oloc);
+                    txt_empleado.setText(empleado.getNombre() + " " + empleado.getApellido());
+                    deshabilitar();
+                }
             }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }//GEN-LAST:event_tablaMouseClicked
 
- 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (chk_emp.isSelected()) {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date desde = formatter.parse(txt_desde.getText());
+                Date hasta = formatter.parse(txt_hasta.getText());
+                if (desde.compareTo(hasta) <= 0) {
+                    Novedad nov = new Novedad(desde, hasta, txt_novedad.getText(), null);
+                    dnov.guardaNovedad(nov);
+                    JOptionPane.showMessageDialog(null, "Novedad Cargada Exitosamente");
+                    limpiar();
+                    limpiarTabla(tabla);
+                    empleado = null;
+                } else {
+                    JOptionPane.showMessageDialog(null, "La fecha Hasta debe ser Mayor o Igual a la de Desde");
+                }
+
+            } else if (!chk_emp.isSelected() && empleado != null) {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date desde = formatter.parse(txt_desde.getText());
+                Date hasta = formatter.parse(txt_hasta.getText());
+                if (desde.compareTo(hasta) <= 0) {
+                    Novedad nov = new Novedad(desde, hasta, txt_novedad.getText(), empleado);
+                    dnov.guardaNovedad(nov);
+                    JOptionPane.showMessageDialog(null, "Novedad Cargada Exitosamente");
+                    limpiar();
+                    limpiarTabla(tabla);
+                    empleado = null;
+                } else {
+                    JOptionPane.showMessageDialog(null, "La fecha Hasta debe ser Mayor o Igual a la de Desde");
+                }
+            } else if (!chk_emp.isSelected() && empleado == null) {
+                JOptionPane.showMessageDialog(null, "Primero debe seleccionar un empleado para cargar la novedad");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label EMPLEADOS;
+    private javax.swing.JCheckBox chk_emp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label10;
     private java.awt.Label label6;
@@ -288,7 +348,9 @@ public void limpiar() {
     private java.awt.Label label8;
     private java.awt.Label label9;
     private javax.swing.JTable tabla;
+    private javax.swing.JFormattedTextField txt_desde;
     private java.awt.TextField txt_empleado;
+    private javax.swing.JFormattedTextField txt_hasta;
     private java.awt.TextField txt_nombre;
     private java.awt.TextField txt_novedad;
     // End of variables declaration//GEN-END:variables

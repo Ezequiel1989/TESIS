@@ -9,11 +9,11 @@
         <id name="idnovedades" column="IDNOVEDADES">
             <generator class="identity" />
         </id>
-        <property name="fechainicio" type="date" column="FECHAINICIO" />
-        <property name="fechafin" type="date" column="FECHAFIN" />
-        <property name="observaciones" type="string" column="OBSERVACIONES" />
+        <property name="fechainicio" type="date" column="FECHAINICIO" not-null="true"/>
+        <property name="fechafin" type="date" column="FECHAFIN" not-null="true"/>
+        <property name="observaciones" type="string" column="OBSERVACIONES" not-null="true"/>
         <many-to-one name="oempleado" 
         column="IDEMPLEADOS"
-        not-null="true"/>
+        not-null="false"/>
     </class>
 </hibernate-mapping>
