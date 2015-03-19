@@ -62,9 +62,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="REGISTROS"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="REGISTROS"/>
-      </AccessibilityProperties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="JTablaRegistros">
       <AccessibilityProperties>
