@@ -39,6 +39,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +93,15 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Novedades");
+
+        jMenuItem1.setText("ABM Novedades");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -144,23 +154,20 @@ public class ModuloAdministracion extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         try {
-          if(frmemp == null )
-          {
-            frmemp=new ABMEmpleados();
-            this.desktop.add(frmemp);
-          // this.escritorio.add(jScrollPane1.add(formrp));
-            frmemp.setVisible(rootPaneCheckingEnabled);
-            frmemp.setMaximum(true);
-           }
-          else
-          {
-              frmemp = null;
-              frmemp=new ABMEmpleados();
-            this.desktop.add(frmemp);
-          // this.escritorio.add(jScrollPane1.add(formrp));
-            frmemp.setVisible(rootPaneCheckingEnabled);
-            frmemp.setMaximum(true);
-          }
+            if (frmemp == null) {
+                frmemp = new ABMEmpleados();
+                this.desktop.add(frmemp);
+                // this.escritorio.add(jScrollPane1.add(formrp));
+                frmemp.setVisible(rootPaneCheckingEnabled);
+                frmemp.setMaximum(true);
+            } else {
+                frmemp = null;
+                frmemp = new ABMEmpleados();
+                this.desktop.add(frmemp);
+                // this.escritorio.add(jScrollPane1.add(formrp));
+                frmemp.setVisible(rootPaneCheckingEnabled);
+                frmemp.setMaximum(true);
+            }
         } catch (Exception ex) {
 
         }
@@ -189,6 +196,16 @@ public class ModuloAdministracion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:        
+        try {
+            final ABMNovedades frame12 = new ABMNovedades();
+            frame12.setVisible(true);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -196,6 +213,7 @@ public class ModuloAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
