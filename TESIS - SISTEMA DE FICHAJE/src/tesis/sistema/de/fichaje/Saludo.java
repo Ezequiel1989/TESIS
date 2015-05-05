@@ -7,29 +7,12 @@ package tesis.sistema.de.fichaje;
 
 import Controladora.EmpleadoControladora;
 import Controladora.RegistroControladora;
-import DAO.EmpleadoDAO;
 import DAO.RegistroDAO;
 import Modelo.Empleado;
 import Modelo.Registro;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
-import com.rp.util.DateTime;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.imageio.ImageIO;
 import javax.swing.Timer;
-import org.opencv.highgui.Highgui;
 
 /**
  *

@@ -5,10 +5,7 @@
  */
 package tesis.sistema.de.fichaje;
 
-import Controladora.EmpleadoControladora;
-import DAO.RegistroDAO;
-import Modelo.Empleado;
-import Modelo.Registro;
+
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
@@ -23,19 +20,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import static java.lang.Thread.sleep;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
