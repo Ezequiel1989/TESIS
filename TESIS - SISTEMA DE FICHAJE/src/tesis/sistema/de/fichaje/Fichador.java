@@ -10,12 +10,15 @@ import DAO.RegistroDAO;
 import Modelo.Empleado;
 import Modelo.Registro;
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
+import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.multi.qrcode.QRCodeMultiReader;
 import com.rp.util.DateTime;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -23,6 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -67,6 +71,48 @@ public class Fichador extends javax.swing.JFrame {
         protected volatile boolean runnable = false;
 
         @Override
+//        public void run() {
+//            synchronized (this) {
+//                while (runnable) {
+//                    if (webSource.grab()) {
+//                        try {
+//                            webSource.retrieve(frame);
+//                            Highgui.imencode(".bmp", frame, mem);
+//                            Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
+//                            Result result = null;
+//                            BufferedImage buff = (BufferedImage) im;
+//                            Graphics g = jPanel1.getGraphics();
+//                            LuminanceSource source = new BufferedImageLuminanceSource(buff);
+//                            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//                            try {                                
+//                                result = new MultiFormatReader().decode(bitmap);  
+//                                //this.wait(3000);
+//                                webSource.release();
+//                                tim.stop();
+//                                texto = result.getText();
+//                                final Saludo frame1 = new Saludo(texto, lbl_dia.getText(), lbl_hora.getText());
+//                                frame1.setVisible(true);
+//                                webSource = new VideoCapture(0);
+//                                tim.start();
+//                                this.wait(5005);
+//                            } catch (NotFoundException e) {
+//                                // fall thru, it means there is no QR code in image
+//                                System.out.println("Error1");
+//                            }
+//
+//                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
+//                                if (runnable == false) {
+//                                    System.out.println("Going to wait()");
+//                                    this.wait();
+//                                }
+//                            }
+//                        } catch (Exception ex) {
+//                            System.out.println("Error");
+//                        }
+//                    }
+//                }
+//            }
+//        }
         public void run() {
             synchronized (this) {
                 while (runnable) {
@@ -75,34 +121,48 @@ public class Fichador extends javax.swing.JFrame {
                             webSource.retrieve(frame);
                             Highgui.imencode(".bmp", frame, mem);
                             Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
-                            Result result = null;
                             BufferedImage buff = (BufferedImage) im;
                             Graphics g = jPanel1.getGraphics();
                             LuminanceSource source = new BufferedImageLuminanceSource(buff);
                             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-                            try {
-                                result = new MultiFormatReader().decode(bitmap);
-                                //this.wait(3000);
-                                webSource.release();
-                                tim.stop();
-                                texto = result.getText();
-                                final Saludo frame1 = new Saludo(texto, lbl_dia.getText(), lbl_hora.getText());
-                                frame1.setVisible(true);
-                                webSource = new VideoCapture(0);
-                                tim.start();
-                                this.wait(5005);
-                            } catch (NotFoundException e) {
-                                // fall thru, it means there is no QR code in image
-                            }
+                            Reader reader = new QRCodeMultiReader();
+                            String sResult = "";
 
-                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
-                                if (runnable == false) {
-                                    System.out.println("Going to wait()");
-                                    this.wait();
+                            try {
+                                Result result = reader.decode(bitmap);
+                                //webSource.release();
+                                //tim.stop();
+                                sResult = result.getText();
+                                if (!sResult.equals("")) {
+                                    System.out.println("puto");
+                                    final Saludo frame1 = new Saludo(sResult, lbl_dia.getText(), lbl_hora.getText());
+                                    frame1.setVisible(true);
+                                    sResult = "";
+                                    
+                                    // se catchea cuando entra al nuevo frame problema esta ahi! ! ! !
+                                    
+                                    
                                 }
+                                //webSource = new VideoCapture(0);
+                                //tim.start();
+                                //this.wait(5005);
+                                System.out.println(sResult);
+                            } catch (Exception ex) {
+                                System.out.println("Code Not Found");
                             }
-                        } catch (Exception ex) {
-                            System.out.println("Error");
+                            try {
+                                if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) // if (g2.drawImage(buff2, 0, 0, getWidth(), getHeight() -150 , 0, 0, buff2.getWidth(), buff2.getHeight(), null))
+                                {
+                                    if (runnable == false) {
+                                        System.out.println("Going to wait()");
+                                        this.wait();
+                                    }
+                                }
+                            } catch (InterruptedException ex) {
+                                System.out.println(ex.getMessage());
+                            }
+                        } catch (IOException ex) {
+                            System.out.println(ex.getMessage());
                         }
                     }
                 }
