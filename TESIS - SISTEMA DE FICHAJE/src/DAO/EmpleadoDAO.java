@@ -28,7 +28,9 @@ public class EmpleadoDAO {
      *
      * @throws HibernateException
      */
-    private void iniciaOperacion() throws HibernateException {
+   private void iniciaOperacion() throws HibernateException
+    
+    {
         sesion = HibernateUtil.getSessionFactory().openSession();
         tx = sesion.beginTransaction();
     }
@@ -115,7 +117,7 @@ public class EmpleadoDAO {
 
         try {
             iniciaOperacion();
-            empleado = (Empleado) sesion.get(Empleado.class, idEmpleado);            
+            empleado = (Empleado) sesion.get(Empleado.class, idEmpleado);
         } finally {
             sesion.close();
         }
@@ -131,11 +133,14 @@ public class EmpleadoDAO {
      */
     public Empleado obtenEmpleadoDNI(long documento) throws HibernateException {
         Empleado empleado = null;
-        List<Empleado> listaEmpleados = null;
+        String hql = "from Modelo.Empleado where DOCUMENTO='" + documento + "'";
         try {
             iniciaOperacion();
-            listaEmpleados = sesion.createQuery("from Modelo.Empleado where DOCUMENTO='" + documento + "'").list();
-            empleado = listaEmpleados.get(0);
+            Query query = sesion.createQuery(hql);
+            empleado = (Empleado) query.uniqueResult();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
         } finally {
             sesion.close();
         }

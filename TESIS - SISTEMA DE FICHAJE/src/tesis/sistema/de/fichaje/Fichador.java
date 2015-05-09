@@ -130,25 +130,21 @@ public class Fichador extends javax.swing.JFrame {
 
                             try {
                                 Result result = reader.decode(bitmap);
-                                //webSource.release();
-                                //tim.stop();
+                                webSource.release();
+                                tim.stop();
                                 sResult = result.getText();
                                 if (!sResult.equals("")) {
                                     System.out.println("puto");
                                     final Saludo frame1 = new Saludo(sResult, lbl_dia.getText(), lbl_hora.getText());
                                     frame1.setVisible(true);
                                     sResult = "";
-                                    
-                                    // se catchea cuando entra al nuevo frame problema esta ahi! ! ! !
-                                    
-                                    
                                 }
-                                //webSource = new VideoCapture(0);
-                                //tim.start();
-                                //this.wait(5005);
-                                System.out.println(sResult);
+                                webSource = new VideoCapture(0);
+                                tim.start();
+                                this.wait(5005);
+                                //System.out.println(sResult);
                             } catch (Exception ex) {
-                                System.out.println("Code Not Found");
+                                //System.out.println("Code Not Found");
                             }
                             try {
                                 if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) // if (g2.drawImage(buff2, 0, 0, getWidth(), getHeight() -150 , 0, 0, buff2.getWidth(), buff2.getHeight(), null))
