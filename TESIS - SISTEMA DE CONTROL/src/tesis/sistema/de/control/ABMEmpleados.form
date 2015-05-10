@@ -64,24 +64,29 @@
                   <Component id="btn_nuevo" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btn_modif" min="-2" pref="98" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_borrar" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_agregar" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_generador" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btn_modif" min="-2" pref="98" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_borrar" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_agregar" min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_generador" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txt_domicilio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_telefono" alignment="1" max="32767" attributes="0"/>
+                      <Component id="cmb_localidad" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txt_documento" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_apellido" alignment="0" pref="467" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="txt_domicilio" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txt_telefono" alignment="1" max="32767" attributes="0"/>
-                  <Component id="cmb_localidad" alignment="1" max="32767" attributes="0"/>
-                  <Component id="txt_documento" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txt_apellido" alignment="0" pref="467" max="32767" attributes="0"/>
-                  <Component id="txt_nombre" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="585" max="-2" attributes="0"/>
+                      <Component id="txt_nombre" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="136" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -100,7 +105,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="575" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -113,14 +118,12 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txt_nombre1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="txt_nombre1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="139" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">

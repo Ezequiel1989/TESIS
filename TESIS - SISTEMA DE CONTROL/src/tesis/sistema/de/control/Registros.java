@@ -5,17 +5,38 @@
  */
 package tesis.sistema.de.control;
 
+import Controladora.EmpleadoControladora;
+import Controladora.RegistroControladora;
+import Modelo.Empleado;
+import java.util.List;
+
 /**
  *
  * @author matias
  */
 public class Registros extends javax.swing.JFrame {
+    
+    
+    RegistroControladora dregistros = new RegistroControladora();
+    EmpleadoControladora dempleados = new EmpleadoControladora();
+    int nroFilas = 0;
+    List<Empleado> listaempleados = null;
+    Empleado empleado = null;
+    
 
     /**
      * Creates new form Registros
      */
     public Registros() {
         initComponents();
+        
+        
+    }
+    
+      public void limpiar() {
+        this.txt_RegistroDia.setText("");
+        this.txt_RegistroEmpleado.setText("");
+        this.txt_RegistroHora.setText("");
     }
 
     /**
@@ -27,8 +48,20 @@ public class Registros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jTextField1 = new javax.swing.JTextField();
         EMPLEADOS = new java.awt.Label();
-        JTablaRegistros = new javax.swing.JScrollPane();
+        BtnBuscarRegistro = new javax.swing.JButton();
+        EMPLEADOS1 = new java.awt.Label();
+        EMPLEADOS2 = new java.awt.Label();
+        EMPLEADOS3 = new java.awt.Label();
+        EMPLEADOS4 = new java.awt.Label();
+        txt_RegistroEmpleado = new javax.swing.JTextField();
+        txt_RegistroHora = new javax.swing.JTextField();
+        txt_RegistroDia = new javax.swing.JTextField();
+        jScrollPnRegistros = new javax.swing.JScrollPane();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,6 +70,39 @@ public class Registros extends javax.swing.JFrame {
         EMPLEADOS.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
         EMPLEADOS.setText("REGISTROS");
 
+        BtnBuscarRegistro.setText("Filtrar");
+
+        EMPLEADOS1.setAlignment(java.awt.Label.CENTER);
+        EMPLEADOS1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EMPLEADOS1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        EMPLEADOS1.setText("FILTRAR POR:");
+
+        EMPLEADOS2.setAlignment(java.awt.Label.CENTER);
+        EMPLEADOS2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EMPLEADOS2.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        EMPLEADOS2.setText("DIA:");
+
+        EMPLEADOS3.setAlignment(java.awt.Label.CENTER);
+        EMPLEADOS3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EMPLEADOS3.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        EMPLEADOS3.setText("HORA:");
+
+        EMPLEADOS4.setAlignment(java.awt.Label.CENTER);
+        EMPLEADOS4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EMPLEADOS4.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        EMPLEADOS4.setText("EMPLEADO:");
+
+        txt_RegistroEmpleado.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
+        txt_RegistroHora.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_RegistroHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_RegistroHoraActionPerformed(evt);
+            }
+        });
+
+        txt_RegistroDia.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -44,12 +110,33 @@ public class Registros extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(JTablaRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(215, 215, 215)
+                                .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(160, 160, 160)
+                                        .addComponent(EMPLEADOS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(161, 161, 161)
+                                        .addComponent(BtnBuscarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txt_RegistroDia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(EMPLEADOS3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(EMPLEADOS4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(EMPLEADOS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(33, 33, 33)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txt_RegistroEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_RegistroHora, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 174, Short.MAX_VALUE))
+                    .addComponent(jScrollPnRegistros, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,19 +144,48 @@ public class Registros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTablaRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addComponent(jScrollPnRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(EMPLEADOS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt_RegistroDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addComponent(txt_RegistroHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(EMPLEADOS4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EMPLEADOS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_RegistroEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EMPLEADOS3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(BtnBuscarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
-
-        EMPLEADOS.getAccessibleContext().setAccessibleName("REGISTROS");
-        JTablaRegistros.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_RegistroHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_RegistroHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_RegistroHoraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscarRegistro;
     private java.awt.Label EMPLEADOS;
-    private javax.swing.JScrollPane JTablaRegistros;
+    private java.awt.Label EMPLEADOS1;
+    private java.awt.Label EMPLEADOS2;
+    private java.awt.Label EMPLEADOS3;
+    private java.awt.Label EMPLEADOS4;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JScrollPane jScrollPnRegistros;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txt_RegistroDia;
+    private javax.swing.JTextField txt_RegistroEmpleado;
+    private javax.swing.JTextField txt_RegistroHora;
     // End of variables declaration//GEN-END:variables
 }
