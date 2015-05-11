@@ -244,8 +244,7 @@ public class Fichador extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lbl_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130)))
+                        .addComponent(lbl_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -296,10 +295,12 @@ public class Fichador extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             DateTime hora = new DateTime();
-            lbl_dia.setText(hora.getFullDate().replace("_", "/"));
-            lbl_hora.setText(hora.getFullTime().replace("_", ":").substring(0, 8));
+            Date now = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); 
+            SimpleDateFormat format1 = new SimpleDateFormat ("HH:mm:ss");
+            lbl_dia.setText(format.format(now));
+            lbl_hora.setText(format1.format(now));         
         }
-
     });
 
     /**
