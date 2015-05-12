@@ -23,11 +23,11 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="parametro1" isForPrompting="true" class="java.lang.String"/>
-	<queryString language="hql"><![CDATA[from Modelo.Usuario where usuario = $P{parametro1}]]></queryString>
+	<queryString language="hql"><![CDATA[from Modelo.Usuario]]></queryString>
 
-	<field name="password" class="java.lang.String"/>
+	<field name="idusuarios" class="long"/>
 	<field name="usuario" class="java.lang.String"/>
+	<field name="password" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -92,7 +92,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="69"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="127"
@@ -110,13 +110,13 @@
 					<textElement>
 						<font size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{password}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{idusuarios}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
 						x="0"
 						y="2"
-						width="267"
+						width="178"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -130,7 +130,7 @@
 					<textElement>
 						<font size="12"/>
 					</textElement>
-				<text><![CDATA[password]]></text>
+				<text><![CDATA[idusuarios]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -155,7 +155,7 @@
 					<reportElement
 						x="0"
 						y="21"
-						width="267"
+						width="178"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -170,6 +170,45 @@
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[usuario]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="127"
+						y="40"
+						width="398"
+						height="17"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{password}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="40"
+						width="178"
+						height="17"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="staticText"
+						positionType="Float"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[password]]></text>
 				</staticText>
 			</band>
 		</detail>

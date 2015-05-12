@@ -23,8 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="parametro1" isForPrompting="true" class="java.lang.String"/>
-	<queryString language="hql"><![CDATA[from Modelo.Usuario where usuario = $P{parametro1}]]></queryString>
+	<queryString language="hql"><![CDATA[from Modelo.Usuario]]></queryString>
 
 	<field name="password" class="java.lang.String"/>
 	<field name="usuario" class="java.lang.String"/>

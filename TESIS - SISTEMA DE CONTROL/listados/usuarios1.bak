@@ -28,6 +28,7 @@
 
 	<field name="password" class="java.lang.String"/>
 	<field name="usuario" class="java.lang.String"/>
+	<field name="parametro1" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >

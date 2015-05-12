@@ -29,7 +29,7 @@ public class UsuarioDAO {
     private Session sesion;
     private Transaction tx;
     private final Map<String, Object> param = new HashMap<>();
-    private SimpleDateFormat sf = new SimpleDateFormat("dd-M-yyyy@HH.mm.ss");
+    private SimpleDateFormat sf = new SimpleDateFormat("dd-M-yyyy - HH:mm:ss");
     private Date date = new Date();
 
     /**
@@ -46,7 +46,8 @@ public class UsuarioDAO {
     public void report(String path, String fileName) {
         try {
             iniciaOperacion();
-            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
+            param.put("parametro1", "eze");
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);            
             String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";            
             JasperReport jRpt = JasperCompileManager.compileReport(path);
             JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
