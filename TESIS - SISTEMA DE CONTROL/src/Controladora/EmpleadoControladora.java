@@ -45,4 +45,8 @@ public class EmpleadoControladora {
     public List<Empleado> obtenListaEmpleadosNombre(String nombre) throws HibernateException {
         return emp.obtenListaEmpleadosNombre(nombre);
     }
+    
+    public void report(String path, String fileName) {
+        emp.report(path, fileName);
+    }
 }
