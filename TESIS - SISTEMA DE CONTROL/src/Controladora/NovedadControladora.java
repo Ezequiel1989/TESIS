@@ -61,7 +61,7 @@ public class NovedadControladora {
      *
      * @throws HibernateException
      */
-    public List<Novedad> obtenListaNovedades() throws HibernateException {
-        return nov.obtenListaNovedades();
+    public List<Novedad> obtenListaNovedades(int mes, int ano) throws HibernateException {
+        return nov.obtenListaNovedades(mes, ano);
     }
 }

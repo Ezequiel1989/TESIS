@@ -4,20 +4,38 @@
  * and open the template in the editor.
  */
 package DAO;
+
 import Modelo.Novedad;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import tesis.sistema.de.control.HibernateUtil;
+
 /**
  *
  * @author Ezequiel
  */
 public class NovedadDAO {
+
     private Session sesion;
     private Transaction tx;
+    private final Map<String, Object> param = new HashMap<>();
+    private SimpleDateFormat sf = new SimpleDateFormat("dd-M-yyyy - HH:mm:ss");
+    private Date date = new Date();
 
     /**
      * Este metodo se encarga de abrir la session y comenzar una nueva
@@ -119,7 +137,6 @@ public class NovedadDAO {
         return novedad;
     }
 
-
     /**
      * Este metodo obtiene una lista de todos los empleados en la BD.
      *
@@ -128,17 +145,33 @@ public class NovedadDAO {
      *
      * @throws HibernateException
      */
-    public List<Novedad> obtenListaNovedades() throws HibernateException {
+    public List<Novedad> obtenListaNovedades(int mes, int ano) throws HibernateException {
         List<Novedad> listaNovedades = null;
-
         try {
             iniciaOperacion();
-            listaNovedades = sesion.createQuery("from Modelo.Novedad").list();
+            listaNovedades = sesion.createQuery("from Modelo.Novedad where month(fechainicio) = " + mes + " and year(fechainicio) = " + ano + "").list();
         } finally {
             sesion.close();
         }
 
         return listaNovedades;
     }
- 
+
+    public void report(String path, String fileName) {
+        try {
+            iniciaOperacion();
+//            param.put("mes", 5);
+//            param.put("ano", 2015);
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
+            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
+            JasperReport jRpt = JasperCompileManager.compileReport(path);
+            JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
+            JasperViewer.viewReport(jPrint, false);
+            JasperExportManager.exportReportToPdfFile(jPrint, file);
+        } catch (JRException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            sesion.close();
+        }
+    }
 }
