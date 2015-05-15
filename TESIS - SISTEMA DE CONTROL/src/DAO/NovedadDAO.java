@@ -149,19 +149,18 @@ public class NovedadDAO {
         List<Novedad> listaNovedades = null;
         try {
             iniciaOperacion();
-            listaNovedades = sesion.createQuery("from Modelo.Novedad where month(fechainicio) = " + mes + " and year(fechainicio) = " + ano + "").list();
+            listaNovedades = sesion.createQuery("from Modelo.Novedad where month(fechainicio) = " + mes + " and year(fechainicio) = " + ano + " or month(fechafin) = " + mes + " and year(fechafin) = " + ano + "").list();
         } finally {
             sesion.close();
         }
-
         return listaNovedades;
     }
 
-    public void report(String path, String fileName) {
+    public void report(String path, String fileName, int mes, int ano) {
         try {
             iniciaOperacion();
-//            param.put("mes", 5);
-//            param.put("ano", 2015);
+            param.put("mes", mes);
+            param.put("ano", ano);
             param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
             String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
             JasperReport jRpt = JasperCompileManager.compileReport(path);

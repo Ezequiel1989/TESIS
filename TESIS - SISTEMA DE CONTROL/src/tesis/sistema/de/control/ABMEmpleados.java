@@ -530,7 +530,7 @@ public class ABMEmpleados extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        demp.report("listados\\empleado.jrxml", "Report-");
+        demp.report("listados\\empleado4.jrxml", "Report-");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

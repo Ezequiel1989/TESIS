@@ -492,7 +492,7 @@ public class ABMNovedades extends javax.swing.JFrame {
         // TODO add your handling code here:
         int mes = cmb_mes.getSelectedIndex() + 1;
         int year = Integer.parseInt(cmb_ano.getSelectedItem().toString());
-        dnov.report("listados\\prueba.jrxml", "Report-");
+        dnov.report("listados\\novedades3.jrxml", "Report-", mes, year);
         //dnov.report("listados\\classic1.jrxml", "Report-");
     }//GEN-LAST:event_jButton4ActionPerformed
 
