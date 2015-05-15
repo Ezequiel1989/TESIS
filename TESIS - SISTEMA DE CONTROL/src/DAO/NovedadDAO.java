@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -165,8 +166,14 @@ public class NovedadDAO {
             String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
             JasperReport jRpt = JasperCompileManager.compileReport(path);
             JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
-            JasperViewer.viewReport(jPrint, false);
-            JasperExportManager.exportReportToPdfFile(jPrint, file);
+            if (!jPrint.getPages().isEmpty()) {
+                JasperViewer.viewReport(jPrint, false);
+                JasperExportManager.exportReportToPdfFile(jPrint, file);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No se encuentran movimientos en ese periodo");
+            }   
         } catch (JRException ex) {
             System.out.println(ex.getMessage());
         } finally {
