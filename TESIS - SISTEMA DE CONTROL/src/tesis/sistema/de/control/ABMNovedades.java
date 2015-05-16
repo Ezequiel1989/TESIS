@@ -5,6 +5,9 @@
  */
 package tesis.sistema.de.control;
 
+import Controladora.EmpleadoControladora;
+import Controladora.LocalidadControladora;
+import Controladora.NovedadControladora;
 import DAO.EmpleadoDAO;
 import DAO.LocalidadDAO;
 import DAO.NovedadDAO;
@@ -27,11 +30,11 @@ public class ABMNovedades extends javax.swing.JFrame {
 
     List<Empleado> listaempleados;
     List<Novedad> listanovedades;
-    EmpleadoDAO demp = new EmpleadoDAO();
-    LocalidadDAO dloc = new LocalidadDAO();
+    EmpleadoControladora controle = new EmpleadoControladora();
+    LocalidadControladora controll = new LocalidadControladora();
+    NovedadControladora controln = new NovedadControladora();
     int nroFilas = 0;
     Empleado empleado = null;
-    NovedadDAO dnov = new NovedadDAO();
 
     /**
      * Creates new form ABMNovedade
@@ -364,11 +367,9 @@ public class ABMNovedades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        limpiarTabla1(tabla);
+        limpiarTabla(tabla);
         try {
-            int mes = cmb_mes.getSelectedIndex() + 1;
-            int year = Integer.parseInt((String) cmb_ano.getSelectedItem());
-            listaempleados = demp.obtenListaEmpleadosNombre(txt_nombre.getText());
+            listaempleados = controle.obtenListaEmpleadosNombre(txt_nombre.getText());
             tabla.getColumnModel().getColumn(0).setMaxWidth(0);
             tabla.getColumnModel().getColumn(0).setMinWidth(0);
             tabla.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
@@ -380,7 +381,7 @@ public class ABMNovedades extends javax.swing.JFrame {
                     tabla.setValueAt(e.getIdempleados(), nroFilas, 0);
                     tabla.setValueAt(e.getNombre(), nroFilas, 1);
                     tabla.setValueAt(e.getApellido(), nroFilas, 2);
-                    Localidad oloc = dloc.obtenLocalidad(e.getOlocalidad().getIdlocalidades());
+                    Localidad oloc = controll.obtenLocalidad(e.getOlocalidad().getIdlocalidades());
                     tabla.setValueAt(oloc.getLocalidad(), nroFilas, 4);
                     tabla.setValueAt(e.getDomicilio(), nroFilas, 5);
                     tabla.setValueAt(e.getTelefono(), nroFilas, 6);
@@ -403,7 +404,7 @@ public class ABMNovedades extends javax.swing.JFrame {
                 int fila = tabla.rowAtPoint(evt.getPoint());
                 int columna = tabla.columnAtPoint(evt.getPoint());
                 if ((fila > -1) && (columna > -1)) {
-                    Localidad oloc = dloc.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 4).toString());
+                    Localidad oloc = controll.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 4).toString());
                     empleado = new Empleado(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 0).toString()), modeloDeMiTabla.getValueAt(fila, 1).toString(), modeloDeMiTabla.getValueAt(fila, 2).toString(), modeloDeMiTabla.getValueAt(fila, 5).toString(), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 6).toString()), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 3).toString()), oloc);
                     txt_empleado.setText(empleado.getNombre() + " " + empleado.getApellido());
                     deshabilitar();
@@ -422,10 +423,9 @@ public class ABMNovedades extends javax.swing.JFrame {
                 Date desde = formatter.parse(txt_desde.getText());
                 Date hasta = formatter.parse(txt_hasta.getText());
                 if (desde.compareTo(hasta) <= 0) {
-                    Localidad oloc = new Localidad();
-                    Empleado e = new Empleado(Long.parseLong("0"), "", "", "", 0, 0, oloc);
-                    Novedad nov = new Novedad(desde, hasta, txt_novedad.getText(), e);
-                    dnov.guardaNovedad(nov);
+                    empleado = controle.obtenEmpleado(Long.parseLong("999999"));
+                    Novedad nov = new Novedad(desde, hasta, txt_novedad.getText(), empleado);
+                    controln.guardaNovedad(nov);
                     JOptionPane.showMessageDialog(null, "Novedad Cargada Exitosamente");
                     limpiar();
                     limpiarTabla(tabla);
@@ -440,7 +440,7 @@ public class ABMNovedades extends javax.swing.JFrame {
                 Date hasta = formatter.parse(txt_hasta.getText());
                 if (desde.compareTo(hasta) <= 0) {
                     Novedad nov = new Novedad(desde, hasta, txt_novedad.getText(), empleado);
-                    dnov.guardaNovedad(nov);
+                    controln.guardaNovedad(nov);
                     JOptionPane.showMessageDialog(null, "Novedad Cargada Exitosamente");
                     limpiar();
                     limpiarTabla(tabla);
@@ -462,7 +462,7 @@ public class ABMNovedades extends javax.swing.JFrame {
         try {
             int mes = cmb_mes.getSelectedIndex() + 1;
             int year = Integer.parseInt(cmb_ano.getSelectedItem().toString());
-            listanovedades = dnov.obtenListaNovedades(mes, year);
+            listanovedades = controln.obtenListaNovedades(mes, year);
             tabla.getColumnModel().getColumn(0).setMaxWidth(0);
             tabla.getColumnModel().getColumn(0).setMinWidth(0);
             tabla.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
@@ -475,7 +475,7 @@ public class ABMNovedades extends javax.swing.JFrame {
                     jTable1.setValueAt(e.getFechainicio(), nroFilas, 1);
                     jTable1.setValueAt(e.getFechafin(), nroFilas, 2);
                     long ex = e.getOempleado().getIdempleados();
-                    Empleado emp = demp.obtenEmpleado(ex);
+                    Empleado emp = controle.obtenEmpleado(ex);
                     jTable1.setValueAt(e.getObservaciones(), nroFilas, 3);
                     jTable1.setValueAt(emp.getNombre() + " " + emp.getApellido(), nroFilas, 4);
                     nroFilas++;
@@ -492,8 +492,7 @@ public class ABMNovedades extends javax.swing.JFrame {
         // TODO add your handling code here:
         int mes = cmb_mes.getSelectedIndex() + 1;
         int year = Integer.parseInt(cmb_ano.getSelectedItem().toString());
-        dnov.report("listados\\novedades3.jrxml", "Report-", mes, year);
-        //dnov.report("listados\\classic1.jrxml", "Report-");
+        controln.report("listados\\novedades3.jrxml", "Report-", mes, year);
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

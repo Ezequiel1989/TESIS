@@ -14,6 +14,6 @@
         <property name="observaciones" type="string" column="OBSERVACIONES" not-null="true"/>
         <many-to-one name="oempleado" 
         column="IDEMPLEADOS"
-        not-null="false"/>
+        not-null="true"/>
     </class>
 </hibernate-mapping>
