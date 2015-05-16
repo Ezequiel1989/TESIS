@@ -59,10 +59,8 @@ public class Fichador extends javax.swing.JFrame {
     private DaemonThread myThread = null;
     int count = 0;
     VideoCapture webSource = null;
-
     Mat frame = new Mat();
     MatOfByte mem = new MatOfByte();
-
     String File_path = "";
     String texto = "";
 
@@ -71,48 +69,7 @@ public class Fichador extends javax.swing.JFrame {
         protected volatile boolean runnable = false;
 
         @Override
-//        public void run() {
-//            synchronized (this) {
-//                while (runnable) {
-//                    if (webSource.grab()) {
-//                        try {
-//                            webSource.retrieve(frame);
-//                            Highgui.imencode(".bmp", frame, mem);
-//                            Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
-//                            Result result = null;
-//                            BufferedImage buff = (BufferedImage) im;
-//                            Graphics g = jPanel1.getGraphics();
-//                            LuminanceSource source = new BufferedImageLuminanceSource(buff);
-//                            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-//                            try {                                
-//                                result = new MultiFormatReader().decode(bitmap);  
-//                                //this.wait(3000);
-//                                webSource.release();
-//                                tim.stop();
-//                                texto = result.getText();
-//                                final Saludo frame1 = new Saludo(texto, lbl_dia.getText(), lbl_hora.getText());
-//                                frame1.setVisible(true);
-//                                webSource = new VideoCapture(0);
-//                                tim.start();
-//                                this.wait(5005);
-//                            } catch (NotFoundException e) {
-//                                // fall thru, it means there is no QR code in image
-//                                System.out.println("Error1");
-//                            }
-//
-//                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight() - 150, 0, 0, buff.getWidth(), buff.getHeight(), null)) {
-//                                if (runnable == false) {
-//                                    System.out.println("Going to wait()");
-//                                    this.wait();
-//                                }
-//                            }
-//                        } catch (Exception ex) {
-//                            System.out.println("Error");
-//                        }
-//                    }
-//                }
-//            }
-//        }
+
         public void run() {
             synchronized (this) {
                 while (runnable) {

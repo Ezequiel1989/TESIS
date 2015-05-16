@@ -7,8 +7,6 @@ package tesis.sistema.de.fichaje;
 
 import Controladora.EmpleadoControladora;
 import Controladora.RegistroControladora;
-import DAO.EmpleadoDAO;
-import DAO.RegistroDAO;
 import Modelo.Empleado;
 import Modelo.Registro;
 import com.google.zxing.BinaryBitmap;
@@ -48,9 +46,8 @@ public class Saludo extends javax.swing.JFrame {
         initComponents();
         empleado = controlemp.obtenEmpleadoDNI(Long.parseLong(codigo));
         try {
-            RegistroDAO emp = new RegistroDAO();
             Registro reg = new Registro(dia, hora, empleado);
-            emp.guardaRegistro(reg);
+            registroemp.guardaRegistro(reg);
             jLabel1.setText("Bienvenido " + empleado.getApellido() + " " + empleado.getNombre());
             jLabel2.setText("Dia: " + dia + " Hora: " + hora);
         } catch (Exception ex) {
