@@ -9,25 +9,9 @@ import Controladora.EmpleadoControladora;
 import Controladora.RegistroControladora;
 import Modelo.Empleado;
 import Modelo.Registro;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
-import com.rp.util.DateTime;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.imageio.ImageIO;
 import javax.swing.Timer;
-import org.opencv.highgui.Highgui;
 
 /**
  *
@@ -52,12 +36,9 @@ public class Saludo extends javax.swing.JFrame {
             jLabel2.setText("Dia: " + dia + " Hora: " + hora);
         } catch (Exception ex) {
             jLabel1.setText("Error");
-            if(empleado == null)
-            {
+            if (empleado == null) {
                 jLabel2.setText("Empleado Inexistente");
-            }
-            else
-            {
+            } else {
                 jLabel2.setText("Hubo un error en la grabacion, reintente");
             }
         }

@@ -15,25 +15,22 @@ import java.util.List;
  * @author matias
  */
 public class Registros extends javax.swing.JFrame {
-    
-    
+
     RegistroControladora dregistros = new RegistroControladora();
     EmpleadoControladora dempleados = new EmpleadoControladora();
     int nroFilas = 0;
     List<Empleado> listaempleados = null;
     Empleado empleado = null;
-    
 
     /**
      * Creates new form Registros
      */
     public Registros() {
         initComponents();
-        
-        
+
     }
-    
-      public void limpiar() {
+
+    public void limpiar() {
         this.txt_RegistroDia.setText("");
         this.txt_RegistroEmpleado.setText("");
         this.txt_RegistroHora.setText("");

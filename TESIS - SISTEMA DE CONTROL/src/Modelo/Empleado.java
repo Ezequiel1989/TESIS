@@ -5,14 +5,12 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Ezequiel
  */
 public class Empleado {
+
     private long idempleados;
     private String nombre;
     private String apellido;
@@ -52,7 +50,6 @@ public class Empleado {
 //    public void setReg(List<Registro> reg) {
 //        this.reg = reg;
 //    }
-
     public long getTelefono() {
         return telefono;
     }
@@ -76,43 +73,45 @@ public class Empleado {
     public void setOlocalidad(Localidad olocalidad) {
         this.olocalidad = olocalidad;
     }
-    
-    
+
     // CONSTRUCTORES
-    
-        public   Empleado()
-        {};
+    public Empleado() {
+    }
+
+    ;
         
-        public Empleado(String nomb, String ape, String dom, long tel, long doc)
-        {
-            this.setNombre(nomb);
-            this.setApellido(ape);
-            this.setDomicilio(dom);
-            this.setTelefono(tel);
-            this.setDocumento(doc);
-        }
-        ;
+        public Empleado(String nomb, String ape, String dom, long tel, long doc) {
+        this.setNombre(nomb);
+        this.setApellido(ape);
+        this.setDomicilio(dom);
+        this.setTelefono(tel);
+        this.setDocumento(doc);
+    }
+
+    ;
         
         
-          public Empleado(String nomb, String ape, String dom, long tel, long doc, Localidad loc)
-        {
-            this.setNombre(nomb);
-            this.setApellido(ape);
-            this.setDomicilio(dom);
-            this.setTelefono(tel);
-            this.setOlocalidad(loc);
-            this.setDocumento(doc);
-        };
-            public Empleado(Long i, String nomb, String ape, String dom, long tel, long doc, Localidad loc)
-        {
-            this.setIdempleados(i);
-            this.setNombre(nomb);
-            this.setApellido(ape);
-            this.setDomicilio(dom);
-            this.setTelefono(tel);
-            this.setOlocalidad(loc);
-            this.setDocumento(doc);
-        };
+          public Empleado(String nomb, String ape, String dom, long tel, long doc, Localidad loc) {
+        this.setNombre(nomb);
+        this.setApellido(ape);
+        this.setDomicilio(dom);
+        this.setTelefono(tel);
+        this.setOlocalidad(loc);
+        this.setDocumento(doc);
+    }
+
+    ;
+            public Empleado(Long i, String nomb, String ape, String dom, long tel, long doc, Localidad loc) {
+        this.setIdempleados(i);
+        this.setNombre(nomb);
+        this.setApellido(ape);
+        this.setDomicilio(dom);
+        this.setTelefono(tel);
+        this.setOlocalidad(loc);
+        this.setDocumento(doc);
+    }
+
+    ;
 
     public long getDocumento() {
         return documento;

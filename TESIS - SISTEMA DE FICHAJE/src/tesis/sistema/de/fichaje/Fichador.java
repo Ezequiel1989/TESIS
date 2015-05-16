@@ -5,15 +5,8 @@
  */
 package tesis.sistema.de.fichaje;
 
-import Controladora.EmpleadoControladora;
-import DAO.RegistroDAO;
-import Modelo.Empleado;
-import Modelo.Registro;
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.ChecksumException;
 import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -27,20 +20,11 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.highgui.Highgui;
@@ -253,10 +237,10 @@ public class Fichador extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             DateTime hora = new DateTime();
             Date now = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); 
-            SimpleDateFormat format1 = new SimpleDateFormat ("HH:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
             lbl_dia.setText(format.format(now));
-            lbl_hora.setText(format1.format(now));         
+            lbl_hora.setText(format1.format(now));
         }
     });
 

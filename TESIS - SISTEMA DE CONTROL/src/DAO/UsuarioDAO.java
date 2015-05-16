@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JRException;
+
 /**
  *
  * @author Ezequiel
@@ -47,8 +48,8 @@ public class UsuarioDAO {
         try {
             iniciaOperacion();
             param.put("parametro1", "eze");
-            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);            
-            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";            
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
+            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
             JasperReport jRpt = JasperCompileManager.compileReport(path);
             JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
             JasperViewer.viewReport(jPrint, false);
@@ -66,7 +67,6 @@ public class UsuarioDAO {
      * @param La excepcion capturada
      * @throws HibernateException
      */
-
     private void manejaExcepcion(HibernateException he) throws HibernateException {
         tx.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);

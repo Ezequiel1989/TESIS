@@ -23,25 +23,22 @@ import javax.imageio.ImageIO;
 /**
  *
  * @author matias
- * @@ -16,11 +49,75 @@ public class TESISSISTEMADECONTROL {
-    /
- **
- * @param args the command line arguments
+ * @@ -16,11 +49,75 @@ public class TESISSISTEMADECONTROL { / * @param args the
+ * command line arguments
  */
 public class TESISSISTEMADECONTROL {
-
 
     public static void main(String[] args) throws WriterException {
 
         // TODO code application logic here
-        UsuarioControladora ContUser = new UsuarioControladora();        
-        Reader lector = new MultiFormatReader();        
+        UsuarioControladora ContUser = new UsuarioControladora();
+        Reader lector = new MultiFormatReader();
         File ubicacionImagen = new File(System.getProperty("user.home") + "/qrcodeDemo.png");
         BufferedImage imagen;
-        final Logueo frame = new Logueo();        
+        final Logueo frame = new Logueo();
         frame.setVisible(true);
         if (ubicacionImagen.exists()) {
-            try {                
+            try {
                 imagen = ImageIO.read(ubicacionImagen);
                 LuminanceSource fuente = new BufferedImageLuminanceSource(imagen);
                 BinaryBitmap mapaBits = new BinaryBitmap(new HybridBinarizer(fuente));
@@ -55,9 +52,8 @@ public class TESISSISTEMADECONTROL {
             } catch (IOException ex) {
                 System.err.println("Ocurrió un error en la inicialización de la SessionFactory: " + ex);
                 throw new ExceptionInInitializerError(ex);
-            }            
-        }        
+            }
+        }
     }
-
 
 }

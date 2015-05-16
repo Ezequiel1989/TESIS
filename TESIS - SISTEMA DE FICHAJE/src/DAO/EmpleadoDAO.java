@@ -28,9 +28,7 @@ public class EmpleadoDAO {
      *
      * @throws HibernateException
      */
-   private void iniciaOperacion() throws HibernateException
-    
-    {
+    private void iniciaOperacion() throws HibernateException {
         sesion = HibernateUtil.getSessionFactory().openSession();
         tx = sesion.beginTransaction();
     }

@@ -11,9 +11,8 @@ import java.util.Date;
  *
  * @author Ezequiel
  */
-public class Novedad
-{
-    
+public class Novedad {
+
     private Date fechainicio;
     private Date fechafin;
     private String observaciones;
@@ -65,8 +64,6 @@ public class Novedad
     /**
      * @return the ousuario
      */
-
-
     /**
      * @return the idnovedades
      */
@@ -88,33 +85,29 @@ public class Novedad
     public void setOempleado(Empleado oempleado) {
         this.oempleado = oempleado;
     }
-    
+
     // CONSTRUCTORES
+    public Novedad() {
+
+    }
+
+    ;
     
-    public Novedad()
-    {
-        
-    };
-    
-    public Novedad(Date fechaini, Date fechaf, String observ)
-    {
+    public Novedad(Date fechaini, Date fechaf, String observ) {
         this.setFechainicio(fechaini);
         this.setFechafin(fechaf);
         this.setObservaciones(observ);
-    };
+    }
+
+    ;
     
-    public Novedad(Date fechaini, Date fechaf, String observ, Empleado emp)
-    {
+    public Novedad(Date fechaini, Date fechaf, String observ, Empleado emp) {
         this.setFechainicio(fechaini);
         this.setFechafin(fechaf);
         this.setObservaciones(observ);
         this.setOempleado(emp);
-    
-    };
-    
-    
-    
-    
-            
-    
+
+    }
+;
+
 }

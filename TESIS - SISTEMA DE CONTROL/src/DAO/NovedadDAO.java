@@ -21,7 +21,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import tesis.sistema.de.control.HibernateUtil;
@@ -169,11 +168,9 @@ public class NovedadDAO {
             if (!jPrint.getPages().isEmpty()) {
                 JasperViewer.viewReport(jPrint, false);
                 JasperExportManager.exportReportToPdfFile(jPrint, file);
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "No se encuentran movimientos en ese periodo");
-            }   
+            }
         } catch (JRException ex) {
             System.out.println(ex.getMessage());
         } finally {

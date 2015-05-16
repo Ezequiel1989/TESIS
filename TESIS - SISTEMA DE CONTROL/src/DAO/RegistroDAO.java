@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+
 import Modelo.Registro;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -11,11 +12,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import tesis.sistema.de.control.HibernateUtil;
+
 /**
  *
  * @author Ezequiel
  */
 public class RegistroDAO {
+
     private Session sesion;
     private Transaction tx;
 
@@ -112,7 +115,7 @@ public class RegistroDAO {
 
         try {
             iniciaOperacion();
-            registro = (Registro) sesion.get(Registro.class, idRegistro);            
+            registro = (Registro) sesion.get(Registro.class, idRegistro);
         } finally {
             sesion.close();
         }
@@ -126,8 +129,6 @@ public class RegistroDAO {
      * @return Un empleado si este se encuentra disponible, sino NULL.
      * @throws HibernateException
      */
-    
-
     /**
      * Este metodo obtiene una lista de todos los empleados en la BD.
      *

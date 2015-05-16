@@ -14,8 +14,10 @@ import org.hibernate.HibernateException;
  * @author Ezequiel
  */
 public class UsuarioControladora {
+
     UsuarioDAO usr = new UsuarioDAO();
+
     public Usuario confirmarUsuario(String user, String pass) throws HibernateException {
-    return usr.confirmarUsuario(user, pass);
+        return usr.confirmarUsuario(user, pass);
     }
 }

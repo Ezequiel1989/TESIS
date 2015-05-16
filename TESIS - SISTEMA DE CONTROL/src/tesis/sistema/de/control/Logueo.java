@@ -140,19 +140,18 @@ public class Logueo extends javax.swing.JFrame {
     private void txt_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyReleased
         // TODO add your handling code here:
         int key = evt.getKeyCode();
-            if (key == evt.VK_ENTER) {                
-                entrar();
-                txt_usuario.requestFocus();
-            }
+        if (key == evt.VK_ENTER) {
+            entrar();
+            txt_usuario.requestFocus();
+        }
     }//GEN-LAST:event_txt_passwordKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         DAOUsuario.report("listados\\usuarios1.jrxml", "Report-");
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void entrar()
-    {
-        try {            
+    public void entrar() {
+        try {
             String password = txt_password.getText();
             String usuario = txt_usuario.getText();
             Usuario confirmar = DAOUsuario.confirmarUsuario(usuario, password);

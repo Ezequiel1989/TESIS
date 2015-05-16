@@ -37,6 +37,7 @@ public class EmpleadoDAO {
     private final Map<String, Object> param = new HashMap<>();
     private SimpleDateFormat sf = new SimpleDateFormat("dd-M-yyyy - HH:mm:ss");
     private Date date = new Date();
+
     /**
      * Este metodo se encarga de abrir la session y comenzar una nueva
      * transaccion
@@ -51,24 +52,23 @@ public class EmpleadoDAO {
     public void report(String path, String fileName) {
         try {
             iniciaOperacion();
-            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);            
-            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";            
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
+            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
             JasperReport jRpt = JasperCompileManager.compileReport(path);
-            JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);           
+            JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
             if (!jPrint.getPages().isEmpty()) {
                 JasperViewer.viewReport(jPrint, false);
                 JasperExportManager.exportReportToPdfFile(jPrint, file);
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "No se encuentran movimientos en ese periodo");
-            } 
+            }
         } catch (JRException ex) {
             System.out.println(ex.getMessage());
         } finally {
             sesion.close();
         }
     }
+
     /**
      * Este metodo hace rollback a la transaccion en caso de excepcion.
      *

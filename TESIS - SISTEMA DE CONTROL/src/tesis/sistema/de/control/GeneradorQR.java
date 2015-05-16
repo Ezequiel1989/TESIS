@@ -13,9 +13,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -31,7 +29,6 @@ public class GeneradorQR extends javax.swing.JFrame {
     private static final int ancho = 500;
     private static final int alto = 500;
     private static String datos = "";
-    
 
     /**
      * Creates new form GeneradorQR
@@ -162,11 +159,11 @@ public class GeneradorQR extends javax.swing.JFrame {
                     }
                 }
                 image = invertirColores(image);
-                FileOutputStream qrCode = new FileOutputStream(fileToSave.getAbsolutePath()+".png");
+                FileOutputStream qrCode = new FileOutputStream(fileToSave.getAbsolutePath() + ".png");
                 ImageIO.write(image, FORMATO_IMAGEN, qrCode);
                 qrCode.close();
                 Desktop d = Desktop.getDesktop();
-                d.open(new File(fileToSave.getAbsolutePath()+".png"));
+                d.open(new File(fileToSave.getAbsolutePath() + ".png"));
             } catch (Exception x) {
                 System.err.println("Ocurrió un error en la inicialización de la SessionFactory: " + x);
                 throw new ExceptionInInitializerError(x);

@@ -15,18 +15,19 @@ import org.hibernate.HibernateException;
  * @author Ezequiel
  */
 public class RegistroControladora {
+
     RegistroDAO dao = new RegistroDAO();
-    
+
     public void guardaRegistro(Registro registro) throws HibernateException {
-    dao.guardaRegistro(registro);
+        dao.guardaRegistro(registro);
     }
 
     public void actualizaRegistro(Registro registro) throws HibernateException {
-dao.actualizaRegistro(registro);
+        dao.actualizaRegistro(registro);
     }
 
     public void eliminaRegistro(Registro registro) throws HibernateException {
-dao.eliminaRegistro(registro);
+        dao.eliminaRegistro(registro);
     }
 
     public Registro obtenRegistro(long idRegistro) throws HibernateException {

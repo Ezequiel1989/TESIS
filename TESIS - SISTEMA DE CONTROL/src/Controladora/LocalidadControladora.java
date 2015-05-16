@@ -15,16 +15,16 @@ import org.hibernate.HibernateException;
  * @author Ezequiel
  */
 public class LocalidadControladora {
-        LocalidadDAO loc = new LocalidadDAO();
+
+    LocalidadDAO loc = new LocalidadDAO();
+
     public void guardaLocalidad(Localidad localidad) throws HibernateException {
         loc.guardaLocalidad(localidad);
     }
 
-
     public void actualizaLocalidad(Localidad localidad) throws HibernateException {
         loc.actualizaLocalidad(localidad);
     }
-
 
     public void eliminaLocalidad(Localidad localidad) throws HibernateException {
         loc.eliminaLocalidad(localidad);
@@ -41,8 +41,8 @@ public class LocalidadControladora {
     public List<Localidad> obtenListaLocalidadesNombre(String nombre) throws HibernateException {
         return loc.obtenListaLocalidadesNombre(nombre);
     }
-    
-        public Localidad obtenLocalidadNombre(String nombre) throws HibernateException {
-                return loc.obtenLocalidadNombre(nombre);
+
+    public Localidad obtenLocalidadNombre(String nombre) throws HibernateException {
+        return loc.obtenLocalidadNombre(nombre);
     }
 }

@@ -5,15 +5,12 @@
  */
 package Modelo;
 
-import com.rp.util.DateTime;
-import java.sql.Time;
-import java.sql.Date;
-
 /**
  *
  * @author Ezequiel
  */
 public class Registro {
+
     private long idregistros;
     private String dia;
     private String hora;
@@ -27,7 +24,6 @@ public class Registro {
         this.idregistros = idregistro;
     }
 
-    
     public Empleado getEmpleado() {
         return empleado;
     }
@@ -35,25 +31,28 @@ public class Registro {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+
+    public Registro() {
+
+    }
+
+    ;
     
-    public Registro()
-    {
-        
-    };
-    
-    public Registro(String dia, String hora, Empleado emp)
-    {
+    public Registro(String dia, String hora, Empleado emp) {
         this.setDia(dia);
         this.setHora(hora);
         this.setEmpleado(emp);
-    };
+    }
+
+    ;
     
-    public Registro(String dia, String hora)
-    {
+    public Registro(String dia, String hora) {
         this.setDia(dia);
         this.setHora(hora);
-        
-    };
+
+    }
+
+    ;
 
     public String getDia() {
         return dia;

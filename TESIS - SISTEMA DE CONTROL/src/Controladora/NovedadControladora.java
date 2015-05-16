@@ -64,7 +64,7 @@ public class NovedadControladora {
     public List<Novedad> obtenListaNovedades(int mes, int ano) throws HibernateException {
         return nov.obtenListaNovedades(mes, ano);
     }
-    
+
     public void report(String path, String fileName, int mes, int ano) {
         nov.report(path, fileName, mes, ano);
     }
