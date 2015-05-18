@@ -26,7 +26,7 @@
 	<parameter name="mes" isForPrompting="false" class="java.lang.Integer"/>
 	<parameter name="ano" isForPrompting="false" class="java.lang.Integer"/>
 	<parameter name="ide" isForPrompting="false" class="java.lang.Long"/>
-	<queryString language="hql"><![CDATA[select n.dia as Fecha, n.hora as Hora, e.nombre as Nombre, e.apellido as Apellido from Modelo.Registro n inner join n.empleado e where month(STR_TO_DATE(n.dia, '%m/%d/%Y')) = $P{mes} and year(STR_TO_DATE(n.dia, '%m/%d/%Y')) = $P{ano} and e.idempleados = $P{ide}]]></queryString>
+	<queryString language="hql"><![CDATA[select n.dia as Dia, n.hora as Hora, e.nombre as Nombre, e.apellido as Apellido from Modelo.Registro n inner join n.empleado e where month(STR_TO_DATE(n.dia, '%m/%d/%Y')) = $P{mes} and year(STR_TO_DATE(n.dia, '%m/%d/%Y')) = $P{ano} and e.idempleados = $P{ide}]]></queryString>
 
 	<field name="Dia" class="java.lang.String"/>
 	<field name="Hora" class="java.lang.String"/>

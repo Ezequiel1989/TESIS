@@ -14,6 +14,9 @@ import Modelo.Localidad;
 import Modelo.Novedad;
 import Modelo.Registro;
 import com.rp.util.DateTime;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -355,7 +358,10 @@ public class Registros extends javax.swing.JInternalFrame {
                     for (Registro e : listaregistros) {
                         modeloDeMiTabla.addRow(new Object[nroFilas]);
                         jTable1.setValueAt(e.getIdregistros(), nroFilas, 0);
-                        jTable1.setValueAt(e.getDia(), nroFilas, 1);
+                        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");                        
+                        Date today = formatter.parse(e.getDia());
+                        System.out.println("Today : " + today);
+                        jTable1.setValueAt(formatter.format(today), nroFilas, 1);
                         jTable1.setValueAt(e.getHora(), nroFilas, 2);
                         long ex = e.getEmpleado().getIdempleados();
                         Empleado emp = controle.obtenEmpleado(ex);

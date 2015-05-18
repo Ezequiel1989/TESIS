@@ -177,7 +177,7 @@ public class RegistroDAO {
      */
     public List<Registro> obtenListaRegistrosNombre(int mes, int ano, Empleado e) throws HibernateException {
         List<Registro> listaRegistros = null;
-        String hql = "from Modelo.Registro where month(STR_TO_DATE(dia, '%m/%d/%Y')) = '"+mes+"' and year(STR_TO_DATE(dia, '%m/%d/%Y')) = '"+ano+"' and idempleados = '"+e.getIdempleados()+"'";
+        String hql = "from Modelo.Registro where month(STR_TO_DATE(dia, '%d/%m/%Y')) = '"+mes+"' and year(STR_TO_DATE(dia, '%d/%m/%Y')) = '"+ano+"' and idempleados = '"+e.getIdempleados()+"'";
         try {
             iniciaOperacion();
             Query query = sesion.createQuery(hql);
