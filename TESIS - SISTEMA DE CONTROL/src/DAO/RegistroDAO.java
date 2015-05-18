@@ -5,8 +5,22 @@
  */
 package DAO;
 
+import Modelo.Empleado;
 import Modelo.Registro;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,6 +35,9 @@ public class RegistroDAO {
 
     private Session sesion;
     private Transaction tx;
+    private final Map<String, Object> param = new HashMap<>();
+    private SimpleDateFormat sf = new SimpleDateFormat("dd-M-yyyy - HH:mm:ss");
+    private Date date = new Date();
 
     /**
      * Este metodo se encarga de abrir la session y comenzar una nueva
@@ -158,9 +175,9 @@ public class RegistroDAO {
      * @param nombre de Empleado a buscar.
      * @throws HibernateException
      */
-    public List<Registro> obtenListaRegistrosNombre(String nombre) throws HibernateException {
+    public List<Registro> obtenListaRegistrosNombre(int mes, int ano, Empleado e) throws HibernateException {
         List<Registro> listaRegistros = null;
-        String hql = "from Modelo.Registro where NOMBRE='" + nombre + "'";
+        String hql = "from Modelo.Registro where month(STR_TO_DATE(dia, '%m/%d/%Y')) = '"+mes+"' and year(STR_TO_DATE(dia, '%m/%d/%Y')) = '"+ano+"' and idempleados = '"+e.getIdempleados()+"'";
         try {
             iniciaOperacion();
             Query query = sesion.createQuery(hql);
@@ -169,5 +186,27 @@ public class RegistroDAO {
             sesion.close();
         }
         return listaRegistros;
+    }
+        public void report(String path, String fileName, int mes, int ano, Empleado e) {
+        try {
+            iniciaOperacion();
+            param.put("mes", mes);
+            param.put("ano", ano);
+            param.put("ide", e.getIdempleados());
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, sesion);
+            String file = "pdf\\" + fileName + sf.format(date.getTime()) + ".pdf";
+            JasperReport jRpt = JasperCompileManager.compileReport(path);
+            JasperPrint jPrint = JasperFillManager.fillReport(jRpt, param);
+            if (!jPrint.getPages().isEmpty()) {
+                JasperViewer.viewReport(jPrint, false);
+                JasperExportManager.exportReportToPdfFile(jPrint, file);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encuentran movimientos en ese periodo");
+            }
+        } catch (JRException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            sesion.close();
+        }
     }
 }

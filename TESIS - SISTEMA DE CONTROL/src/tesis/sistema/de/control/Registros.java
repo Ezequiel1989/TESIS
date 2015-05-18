@@ -5,17 +5,46 @@
  */
 package tesis.sistema.de.control;
 
+import Controladora.EmpleadoControladora;
+import Controladora.LocalidadControladora;
+import Controladora.NovedadControladora;
+import Controladora.RegistroControladora;
+import Modelo.Empleado;
+import Modelo.Localidad;
+import Modelo.Novedad;
+import Modelo.Registro;
+import com.rp.util.DateTime;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ezequiel
  */
 public class Registros extends javax.swing.JInternalFrame {
 
+    List<Empleado> listaempleados;
+    List<Registro> listaregistros;
+    EmpleadoControladora controle = new EmpleadoControladora();
+    LocalidadControladora controll = new LocalidadControladora();
+    RegistroControladora controlr = new RegistroControladora();
+    int nroFilas = 0;
+    Empleado empleado = null;
+
     /**
      * Creates new form Registros
      */
     public Registros() {
         initComponents();
+        DateTime y = new DateTime();
+        int ano = Integer.parseInt(y.getYear());
+        ano = ano - 1;
+        for (int x = 0; x < 5; x++) {
+            cmb_ano.addItem(ano);
+            ano = ano + 1;
+        }
     }
 
     /**
@@ -27,25 +56,358 @@ public class Registros extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        EMPLEADOS = new java.awt.Label();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        txt_nombre = new java.awt.TextField();
+        label6 = new java.awt.Label();
+        jLabel2 = new javax.swing.JLabel();
+        label10 = new java.awt.Label();
+        txt_empleado = new java.awt.TextField();
+        label11 = new java.awt.Label();
+        label12 = new java.awt.Label();
+        cmb_mes = new javax.swing.JComboBox();
+        cmb_ano = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setMaximumSize(new java.awt.Dimension(701, 477));
         setMinimumSize(new java.awt.Dimension(701, 477));
         setPreferredSize(new java.awt.Dimension(701, 477));
+
+        EMPLEADOS.setAlignment(java.awt.Label.CENTER);
+        EMPLEADOS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EMPLEADOS.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
+        EMPLEADOS.setText("REGISTOS");
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido", "Documento", "Localidad", "Domicilio", "Telefono"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
+
+        label6.setAlignment(java.awt.Label.CENTER);
+        label6.setText("BUSCAR POR NOMBRE");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel2.setText("Para seleccionar un Empleado hacer Doble Click sobre la fila deseada");
+
+        label10.setAlignment(java.awt.Label.CENTER);
+        label10.setText("EMPLEADO");
+
+        txt_empleado.setEnabled(false);
+
+        label11.setAlignment(java.awt.Label.CENTER);
+        label11.setText("DESDE");
+
+        label12.setAlignment(java.awt.Label.CENTER);
+        label12.setText("HASTA");
+
+        cmb_mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+
+        jButton3.setText("Consultar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("PDF");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Dia", "Hora", "Empleado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(279, 279, 279)
+                                .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(89, 89, 89))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmb_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(label12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmb_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jButton3)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jButton4)
+                                        .addGap(23, 23, 23))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton1))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(EMPLEADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmb_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4)
+                        .addComponent(jButton3))
+                    .addComponent(cmb_mes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiarTabla(tabla);
+        try {
+            listaempleados = controle.obtenListaEmpleadosNombre(txt_nombre.getText());
+            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tabla.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+            tabla.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+            if (!listaempleados.isEmpty()) {
+                DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
+                for (Empleado e : listaempleados) {
+                    modeloDeMiTabla.addRow(new Object[nroFilas]);
+                    tabla.setValueAt(e.getIdempleados(), nroFilas, 0);
+                    tabla.setValueAt(e.getNombre(), nroFilas, 1);
+                    tabla.setValueAt(e.getApellido(), nroFilas, 2);
+                    Localidad oloc = controll.obtenLocalidad(e.getOlocalidad().getIdlocalidades());
+                    tabla.setValueAt(oloc.getLocalidad(), nroFilas, 4);
+                    tabla.setValueAt(e.getDomicilio(), nroFilas, 5);
+                    tabla.setValueAt(e.getTelefono(), nroFilas, 6);
+                    tabla.setValueAt(e.getDocumento(), nroFilas, 3);
+                    nroFilas++;
+                }
+                nroFilas = 0;
+
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void limpiar() {
+        this.txt_nombre.setText("");
+        this.txt_empleado.setText("");
+    }
+
+    public void habilitar() {
+        this.txt_nombre.enable(true);
+    }
+
+    public void deshabilitar() {
+        this.txt_nombre.enable(false);
+        this.txt_empleado.enable(false);
+    }
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        // TODO add your handling code here:
+        try {
+            if (evt.getClickCount() == 2) {
+                DefaultTableModel modeloDeMiTabla = (DefaultTableModel) tabla.getModel();
+                int fila = tabla.rowAtPoint(evt.getPoint());
+                int columna = tabla.columnAtPoint(evt.getPoint());
+                if ((fila > -1) && (columna > -1)) {
+                    Localidad oloc = controll.obtenLocalidadNombre(modeloDeMiTabla.getValueAt(fila, 4).toString());
+                    empleado = new Empleado(Long.parseLong(modeloDeMiTabla.getValueAt(fila, 0).toString()), modeloDeMiTabla.getValueAt(fila, 1).toString(), modeloDeMiTabla.getValueAt(fila, 2).toString(), modeloDeMiTabla.getValueAt(fila, 5).toString(), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 6).toString()), Long.parseLong(modeloDeMiTabla.getValueAt(fila, 3).toString()), oloc);
+                    txt_empleado.setText(empleado.getNombre() + " " + empleado.getApellido());
+                    deshabilitar();
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_tablaMouseClicked
+
+    public void limpiarTabla(JTable tabla) {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+            int filas = tabla.getRowCount();
+            for (int i = 0; filas > i; i++) {
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
+
+    public void limpiarTabla1(JTable jTable1) {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            int filas = jTable1.getRowCount();
+            for (int i = 0; filas > i; i++) {
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+    }
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        limpiarTabla1(jTable1);
+        limpiarTabla(tabla);
+        try {
+            int mes = cmb_mes.getSelectedIndex() + 1;
+            int year = Integer.parseInt(cmb_ano.getSelectedItem().toString());
+            if (empleado != null) {
+                listaregistros = controlr.obtenListaRegistrosNombre(mes, year, empleado);
+                jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+                jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+                jTable1.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+                jTable1.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+                if (!listaregistros.isEmpty()) {
+                    DefaultTableModel modeloDeMiTabla = (DefaultTableModel) jTable1.getModel();
+                    for (Registro e : listaregistros) {
+                        modeloDeMiTabla.addRow(new Object[nroFilas]);
+                        jTable1.setValueAt(e.getIdregistros(), nroFilas, 0);
+                        jTable1.setValueAt(e.getDia(), nroFilas, 1);
+                        jTable1.setValueAt(e.getHora(), nroFilas, 2);
+                        long ex = e.getEmpleado().getIdempleados();
+                        Empleado emp = controle.obtenEmpleado(ex);
+                        jTable1.setValueAt(emp.getNombre() + " " + emp.getApellido(), nroFilas, 3);
+                        nroFilas++;
+                    }
+                    nroFilas = 0;
+                }
+                empleado = null;
+                limpiar();
+                habilitar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Primero debe seleccionar un empleado para cargar el registro");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if (empleado != null) {
+            int mes = cmb_mes.getSelectedIndex() + 1;
+            int year = Integer.parseInt(cmb_ano.getSelectedItem().toString());
+            controlr.report("listados\\registros.jrxml", "Report-", mes, year, empleado);
+            empleado = null;
+            limpiar();
+            limpiarTabla(tabla);
+            habilitar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Primero debe seleccionar un empleado para cargar el registro");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label EMPLEADOS;
+    private javax.swing.JComboBox cmb_ano;
+    private javax.swing.JComboBox cmb_mes;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private java.awt.Label label10;
+    private java.awt.Label label11;
+    private java.awt.Label label12;
+    private java.awt.Label label6;
+    private javax.swing.JTable tabla;
+    private java.awt.TextField txt_empleado;
+    private java.awt.TextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

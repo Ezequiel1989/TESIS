@@ -6,6 +6,7 @@
 package Controladora;
 
 import DAO.RegistroDAO;
+import Modelo.Empleado;
 import Modelo.Registro;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -38,8 +39,12 @@ public class RegistroControladora {
         return dao.obtenListaRegistro();
     }
 
-    public List<Registro> obtenListaRegistrosNombre(String nombre) throws HibernateException {
+    public List<Registro> obtenListaRegistrosNombre(int mes, int ano, Empleado e) throws HibernateException {
 
-        return dao.obtenListaRegistrosNombre(nombre);
+        return dao.obtenListaRegistrosNombre(mes, ano, e);
+    }
+
+    public void report(String path, String fileName, int mes, int ano, Empleado empleado) {
+        dao.report(path, fileName, mes, ano, empleado);
     }
 }
