@@ -1,0 +1,6 @@
+Dificultades encontradas.
+Ireport problemas con la foreign key 
+pasaje de parametros para ireport con hibernate
+Github problema con los comits
+Opencv formateamos pc e instalamos windows x64 no andaba
+hilos de ejecucion para el reconocimiento del codigo qr
