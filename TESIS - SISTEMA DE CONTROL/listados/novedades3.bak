@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="classic"
+		 name="novedades3"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -110,9 +110,9 @@
 			<band height="107"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
-						y="2"
-						width="398"
+						x="2"
+						y="22"
+						width="102"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -142,16 +142,16 @@
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 </box>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[fechainicio]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
-						y="21"
-						width="398"
+						x="121"
+						y="23"
+						width="86"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -168,8 +168,8 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="0"
-						y="21"
+						x="115"
+						y="2"
 						width="107"
 						height="17"
 						forecolor="#000000"
@@ -181,17 +181,17 @@
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 </box>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[fechafin]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
-						y="40"
-						width="398"
-						height="17"
+						x="223"
+						y="21"
+						width="117"
+						height="22"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"/>
@@ -207,8 +207,8 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="0"
-						y="40"
+						x="233"
+						y="2"
 						width="107"
 						height="17"
 						forecolor="#000000"
@@ -220,16 +220,16 @@
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 </box>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[Observaciones]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
-						y="59"
-						width="398"
+						x="355"
+						y="23"
+						width="83"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -246,9 +246,9 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="0"
-						y="59"
-						width="107"
+						x="363"
+						y="2"
+						width="68"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -259,16 +259,16 @@
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 </box>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[Nombre]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
-						y="78"
-						width="398"
+						x="447"
+						y="23"
+						width="83"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -285,9 +285,9 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="0"
-						y="78"
-						width="107"
+						x="449"
+						y="2"
+						width="73"
 						height="17"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -298,11 +298,20 @@
 					<bottomPen lineWidth="0.0" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 </box>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font size="12"/>
 					</textElement>
 				<text><![CDATA[Apellido]]></text>
 				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="44"
+						width="534"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
 			</band>
 		</detail>
 		<columnFooter>
